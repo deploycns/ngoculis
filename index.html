@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio – Lại Minh Ngọc | Ứng dụng CNTT</title>
+  <meta name="description" content="Portfolio học tập của Lại Minh Ngọc – ghi lại hành trình học Nhập môn Công nghệ số." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      /* Matcha Tone Palette */
+      --m-light:      #dcecd1; /* very light matcha */
+      --m-base:       #a3c995; /* base matcha */
+      --m-warm:       #e8edcc; /* yellowish tea */
+      --m-warm-dk:    #b9c47e; 
+      --m-cool:       #d2e8e3; /* cool mint */
+      --m-cool-dk:    #8bbfae;
+      --m-olive:      #d6dec3; 
+      --m-olive-dk:   #9fa882;
+      
+      --cream:        #fafdf8; /* background */
+      --white:        #ffffff;
+      
+      --text:         #3b4a32;
+      --text-light:   #5b6e4e;
+      --text-muted:   #8a9e7c;
+      
+      --shadow-sm:    0 2px 12px rgba(130, 150, 110, 0.10);
+      --shadow-md:    0 6px 28px rgba(130, 150, 110, 0.16);
+      --shadow-lg:    0 12px 48px rgba(130, 150, 110, 0.22);
+      
+      --radius:       20px;
+      --radius-sm:    12px;
+      --transition:   0.35s cubic-bezier(.4,0,.2,1);
+    }
+    
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Be Vietnam Pro', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== DECORATIVE BLOBS (HIỆU ỨNG LOANG MÀU) ===== */
+    .blob-bg {
+      position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
+    }
+    .blob-bg span {
+      position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.45;
+      mix-blend-mode: multiply; /* Tạo hiệu ứng màu loang đan xen như màu nước */
+    }
+    .blob-bg .b1 { width:600px; height:600px; background:var(--m-light); top:-100px; left:-150px; animation: blobMove 14s ease-in-out infinite alternate; }
+    .blob-bg .b2 { width:500px; height:500px; background:var(--m-warm);  top:30%; right:-100px; animation: blobMove 16s ease-in-out infinite alternate-reverse; }
+    .blob-bg .b3 { width:450px; height:450px; background:var(--m-cool);  bottom:-80px; left:25%; animation: blobMove 12s ease-in-out infinite alternate; }
+    .blob-bg .b4 { width:350px; height:350px; background:var(--m-olive); bottom:15%; right:15%;  animation: blobMove 15s ease-in-out infinite alternate-reverse; }
+    
+    @keyframes blobMove {
+      from { transform: translate(0,0) scale(1); }
+      to   { transform: translate(40px,30px) scale(1.1); }
+    }
+
+    /* ===== FLOATING LEAVES ===== */
+    .petals { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+    .petal {
+      position: absolute;
+      width: 14px; height: 22px;
+      border-radius: 0% 100% 0% 100% / 0% 100% 0% 100%; /* Hình chiếc lá */
+      opacity: 0;
+      animation: petalFall linear infinite;
+    }
+    @keyframes petalFall {
+      0%   { opacity:0; transform: translateY(-20px) rotate(0deg); }
+      10%  { opacity:0.8; }
+      90%  { opacity:0.6; }
+      100% { opacity:0; transform: translateY(110vh) rotate(360deg) translateX(80px); }
+    }
+
+    /* ===== NAVIGATION ===== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(250, 253, 248, 0.85);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(163, 201, 149, 0.35);
+      padding: 0 2rem;
+      height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--m-base); font-style: italic; font-weight: bold; }
+    .nav-links { display: flex; gap: 0.4rem; align-items: center; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 0.45rem 1rem;
+      border-radius: 50px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .nav-links a:hover {
+      background: var(--m-light);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+    .nav-links a.active { background: var(--m-light); color: var(--text); }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--m-base);
+      border-radius: 50px;
+      padding: 0.4rem 1.2rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+      animation: fadeInDown 0.8s ease;
+    }
+    .hero-badge::before { content: '🍵'; font-size: 1.1rem; }
+    .hero-avatar {
+      width: 130px; height: 130px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--m-light), var(--m-cool), var(--m-warm));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.5rem;
+      margin: 0 auto 1.8rem;
+      box-shadow: 0 0 0 8px rgba(163,201,149,0.25), 0 0 0 16px rgba(163,201,149,0.1);
+      animation: fadeInDown 0.9s ease 0.1s both, avatarPulse 3s ease-in-out 1.5s infinite;
+      position: relative;
+    }
+    @keyframes avatarPulse {
+      0%, 100% { box-shadow: 0 0 0 8px rgba(163,201,149,0.25), 0 0 0 16px rgba(163,201,149,0.1); }
+      50%       { box-shadow: 0 0 0 12px rgba(163,201,149,0.35), 0 0 0 24px rgba(163,201,149,0.08); }
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, #2b3a24, #5c7849, #4a633c);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+      animation: fadeInUp 0.9s ease 0.2s both;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-light);
+      font-weight: 500;
+      margin-bottom: 0.8rem;
+      animation: fadeInUp 0.9s ease 0.3s both;
+    }
+    .hero-school {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 2.4rem;
+      animation: fadeInUp 0.9s ease 0.4s both;
+    }
+    .hero-school strong { color: var(--text); font-weight: 600; }
+    
+    .hero-tags {
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+      justify-content: center;
+      margin-bottom: 3rem;
+      animation: fadeInUp 0.9s ease 0.5s both;
+    }
+    .hero-tag {
+      padding: 0.4rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.83rem;
+      font-weight: 500;
+      border: 1.5px solid;
+      transition: var(--transition);
+      cursor: default;
+    }
+    .hero-tag:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .hero-tag.t-light { background: var(--m-light); border-color: var(--m-base); color: #4a633c; }
+    .hero-tag.t-cool  { background: var(--m-cool);  border-color: var(--m-cool-dk); color: #3c5e56; }
+    .hero-tag.t-olive { background: var(--m-olive); border-color: var(--m-olive-dk); color: #5a6136; }
+    .hero-tag.t-warm  { background: var(--m-warm);  border-color: var(--m-warm-dk); color: #636b2d; }
+
+    .scroll-hint {
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      animation: fadeInUp 1s ease 0.8s both;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    .scroll-hint .arrow {
+      width: 28px; height: 28px;
+      border: 2px solid var(--m-base);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      animation: bounce 2s ease-in-out infinite;
+      color: var(--m-base);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(6px); }
+    }
+
+    /* ===== SECTIONS ===== */
+    section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .section-header { text-align: center; margin-bottom: 3rem; }
+    .section-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 0.7rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--text);
+      line-height: 1.25;
+    }
+    .section-title em { color: var(--m-base); font-style: italic; }
+    .section-desc {
+      margin-top: 0.8rem;
+      color: var(--text-light);
+      font-size: 0.97rem;
+      max-width: 580px;
+      margin-left: auto; margin-right: auto;
+      line-height: 1.7;
+    }
+
+    /* ===== ABOUT ===== */
+    #about { padding-top: 5rem; padding-bottom: 5rem; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+    .about-card {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(163,201,149,0.3);
+      transition: var(--transition);
+    }
+    .about-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); background: rgba(255,255,255,0.85); }
+    .about-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .about-card p, .about-card li { color: var(--text-light); font-size: 0.93rem; line-height: 1.75; }
+    .about-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .about-card li::before { content: '✦ '; color: var(--m-base); font-size: 0.75rem; }
+
+    .rubric-table {
+      width: 100%; border-collapse: collapse; font-size: 0.85rem; grid-column: 1 / -1;
+    }
+    .rubric-table th {
+      background: linear-gradient(135deg, var(--m-light), var(--m-cool));
+      color: var(--text); padding: 0.8rem 1rem; text-align: left; font-weight: 600;
+    }
+    .rubric-table th:first-child { border-radius: 12px 0 0 0; }
+    .rubric-table th:last-child  { border-radius: 0 12px 0 0; }
+    .rubric-table td {
+      padding: 0.75rem 1rem; border-bottom: 1px solid rgba(163,201,149,0.25);
+      color: var(--text-light); vertical-align: top;
+    }
+    .rubric-table tr:nth-child(even) td { background: rgba(163,201,149,0.08); }
+    .rubric-table tr:last-child td:first-child { border-radius: 0 0 0 12px; }
+    .rubric-table tr:last-child td:last-child  { border-radius: 0 0 12px 0; }
+    
+    .score-badge {
+      display: inline-block; padding: 0.2rem 0.6rem; border-radius: 50px;
+      background: var(--m-cool); color: #3c5e56; font-weight: 700; font-size: 0.85rem;
+    }
+
+    /* ===== WEEK CARDS ===== */
+    #weeks { padding-top: 5rem; padding-bottom: 5rem; }
+    .weeks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+    .week-card {
+      background: rgba(255,255,255,0.7); backdrop-filter: blur(8px);
+      border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden;
+      border: 1px solid rgba(163,201,149,0.3); transition: var(--transition);
+      cursor: pointer; position: relative;
+    }
+    .week-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .week-card::after {
+      content: ''; position: absolute; inset: 0; border-radius: var(--radius);
+      border: 2px solid transparent; transition: var(--transition); pointer-events: none;
+    }
+    .week-card:hover::after { border-color: var(--week-accent, var(--m-base)); }
+    
+    .week-header {
+      padding: 1.5rem 1.6rem 1.2rem;
+      background: linear-gradient(135deg, var(--week-bg1, var(--m-light)), var(--week-bg2, var(--m-warm)));
+      display: flex; align-items: center; gap: 1rem; position: relative; overflow: hidden;
+    }
+    .week-header::before {
+      content: ''; position: absolute; width: 180px; height: 180px; border-radius: 50%;
+      background: rgba(255,255,255,0.25); top: -60px; right: -40px;
+    }
+    .week-number-badge {
+      background: rgba(255,255,255,0.9); border-radius: 14px; width: 54px; height: 54px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      flex-shrink: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .week-number-badge .wn-label { font-size: 0.6rem; font-weight: 700; color: var(--text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
+    .week-number-badge .wn-num   { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--text); line-height: 1; }
+    
+    .week-header-text { flex: 1; min-width: 0; }
+    .week-title { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--text); margin-bottom: 0.25rem; line-height: 1.3; }
+    .week-subtitle { font-size: 0.8rem; color: var(--text-light); }
+    
+    .week-body { padding: 1.4rem 1.6rem 0; }
+    .week-desc { font-size: 0.88rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1rem; }
+    .week-tasks { list-style: none; margin-bottom: 1rem; }
+    .week-tasks li {
+      font-size: 0.83rem; color: var(--text-light); padding: 0.3rem 0;
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      border-bottom: 1px dashed rgba(163,201,149,0.3);
+    }
+    .week-tasks li:last-child { border-bottom: none; }
+    .week-tasks li .dot {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--week-accent, var(--m-base));
+      margin-top: 5px; flex-shrink: 0;
+    }
+
+    .gallery-strip {
+      display: flex; gap: 6px; overflow-x: auto; padding: 1rem 1.6rem;
+      scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin; scrollbar-color: var(--m-base) transparent;
+    }
+    .gallery-strip::-webkit-scrollbar { height: 4px; }
+    .gallery-strip::-webkit-scrollbar-thumb { background: var(--m-base); border-radius: 2px; }
+    .gallery-strip img {
+      width: 90px; height: 70px; object-fit: cover; border-radius: 10px; flex-shrink: 0;
+      scroll-snap-align: start; cursor: pointer; transition: var(--transition); border: 2px solid transparent;
+    }
+    .gallery-strip img:hover { border-color: var(--week-accent, var(--m-base)); transform: scale(1.05); }
+    .no-images { padding: 1rem 1.6rem; font-size: 0.82rem; color: var(--text-muted); font-style: italic; }
+
+    .week-footer { padding: 1rem 1.6rem 1.4rem; display: flex; align-items: center; justify-content: space-between; }
+    .image-count { font-size: 0.78rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.3rem; }
+    
+    .view-btn {
+      font-size: 0.8rem; font-weight: 600; color: var(--week-accent, var(--m-olive-dk));
+      background: none; border: 1.5px solid var(--week-accent, var(--m-olive-dk));
+      border-radius: 50px; padding: 0.35rem 1rem; cursor: pointer; transition: var(--transition);
+      font-family: inherit;
+    }
+    .view-btn:hover { background: var(--week-accent, var(--m-olive-dk)); color: white; }
+
+    .add-photo-btn {
+      display: inline-flex; align-items: center; gap: 0.4rem; background: none;
+      border: 1.5px dashed var(--week-accent, var(--m-olive-dk)); border-radius: 10px;
+      padding: 0.4rem 0.9rem; font-size: 0.8rem; font-weight: 500;
+      color: var(--week-accent, var(--m-olive-dk)); cursor: pointer; transition: var(--transition);
+      font-family: inherit; margin: 0 1.6rem 1rem;
+    }
+    .add-photo-btn:hover { background: rgba(255,255,255,0.9); }
+    .hidden-file-input { display: none; }
+
+    .report-area {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; padding: 0.6rem 1.6rem 0.8rem;
+      border-top: 1px dashed rgba(163,201,149,0.3);
+    }
+    .report-btn {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.7));
+      border: 1.5px solid var(--week-accent, var(--m-base)); border-radius: 50px;
+      padding: 0.38rem 1rem; font-size: 0.78rem; font-weight: 600;
+      color: var(--week-accent, var(--text)); text-decoration: none; transition: var(--transition);
+      cursor: pointer; box-shadow: 0 2px 8px rgba(130,150,110,0.1);
+    }
+    .report-btn:hover {
+      background: var(--week-accent, var(--m-base)); color: white;
+      transform: translateY(-2px); box-shadow: 0 4px 14px rgba(130,150,110,0.22);
+    }
+
+    /* ===== SUMMARY ===== */
+    #summary { padding-top: 5rem; padding-bottom: 5rem; }
+    .summary-content {
+      background: rgba(255,255,255,0.6); backdrop-filter: blur(10px);
+      border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(163,201,149,0.3); display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    .summary-item h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--text); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+    .summary-item p, .summary-item li { font-size: 0.9rem; color: var(--text-light); line-height: 1.75; }
+    .summary-item ul { list-style: none; }
+    .summary-item li { padding: 0.3rem 0; }
+    .summary-item li::before { content: '🍵 '; }
+    
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem; grid-column: 1 / -1; }
+    .skill-pill {
+      background: linear-gradient(135deg, var(--m-light), var(--m-cool)); border-radius: 10px;
+      padding: 0.7rem 1rem; font-size: 0.85rem; font-weight: 500; color: var(--text);
+      display: flex; align-items: center; gap: 0.6rem; transition: var(--transition);
+    }
+    .skill-pill:hover { transform: translateX(4px); box-shadow: var(--shadow-sm); }
+    
+    /* ===== FOOTER ===== */
+    footer {
+      background: linear-gradient(135deg, var(--m-light), var(--m-cool), var(--m-warm));
+      text-align: center; padding: 3rem 2rem; margin-top: 4rem;
+    }
+    footer p { font-size: 0.88rem; color: var(--text); line-height: 1.8; }
+    footer .footer-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--text); margin-bottom: 0.5rem; }
+    footer .heart { color: #8fa074; animation: heartBeat 1.5s ease-in-out infinite; display: inline-block; }
+    @keyframes heartBeat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+
+    /* ===== LIGHTBOX ===== */
+    #lightbox {
+      display: none; position: fixed; inset: 0; z-index: 9999;
+      background: rgba(30,40,25,0.92); backdrop-filter: blur(10px);
+      flex-direction: column; align-items: center; justify-content: center; padding: 2rem;
+    }
+    #lightbox.open { display: flex; }
+    .lightbox-close {
+      position: absolute; top: 1.5rem; right: 1.5rem; background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2); border-radius: 50%; width: 44px; height: 44px;
+      cursor: pointer; color: white; font-size: 1.3rem; display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+    }
+    .lightbox-close:hover { background: var(--m-olive-dk); }
+    .lightbox-week-title { position: absolute; top: 1.5rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.9); font-weight: 500; }
+    .lightbox-main { display: flex; align-items: center; gap: 1.5rem; max-width: 960px; width: 100%; }
+    .lb-arrow {
+      background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 50%;
+      width: 48px; height: 48px; cursor: pointer; color: white; font-size: 1.4rem;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: var(--transition);
+    }
+    .lb-arrow:hover { background: var(--m-olive-dk); }
+    #lightbox-img { max-width: 100%; max-height: 72vh; object-fit: contain; border-radius: 16px; flex: 1; animation: fadeInScale 0.25s ease; }
+    @keyframes fadeInScale { from { opacity:0; transform: scale(0.94); } to { opacity:1; transform: scale(1); } }
+    .lightbox-thumbnails { display: flex; gap: 8px; margin-top: 1.2rem; overflow-x: auto; max-width: 100%; padding-bottom: 4px; }
+    .lightbox-thumbnails img { width: 64px; height: 50px; object-fit: cover; border-radius: 8px; cursor: pointer; opacity: 0.55; border: 2px solid transparent; transition: var(--transition); flex-shrink: 0; }
+    .lightbox-thumbnails img.active { opacity: 1; border-color: var(--m-base); }
+    .lightbox-thumbnails img:hover { opacity: 0.85; }
+    #lightbox-counter { color: rgba(255,255,255,0.5); font-size: 0.82rem; margin-top: 0.7rem; }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInDown { from { opacity:0; transform: translateY(-20px); } to { opacity:1; transform: translateY(0); } }
+    @keyframes fadeInUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid, .summary-content, .skills-grid { grid-template-columns: 1fr; }
+      .lightbox-main { gap: 0.5rem; }
+      .lb-arrow { width: 36px; height: 36px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- DECORATIVE BLOBS -->
+<div class="blob-bg">
+  <span class="b1"></span>
+  <span class="b2"></span>
+  <span class="b3"></span>
+  <span class="b4"></span>
+</div>
+
+<!-- FLOATING PETALS (LEAVES) -->
+<div class="petals" id="petalsContainer"></div>
+
+<!-- NAVIGATION -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-logo">Minh Ngọc <span>✦</span></a>
+  <div class="nav-links">
+    <a href="#about" id="nav-about">Giới thiệu</a>
+    <a href="#weeks" id="nav-weeks">6 Tuần học</a>
+    <a href="#summary" id="nav-summary">Tổng kết</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-badge">Portfolio học tập · 2026</div>
+  <div class="hero-avatar">🍵</div>
+  <h1 class="hero-name">Lại Minh Ngọc</h1>
+  <p class="hero-sub">Sinh viên Đại học Ngoại ngữ – ĐHQGHN</p>
+  <p class="hero-school">
+    <strong>MSV: 25040931</strong> &nbsp;·&nbsp; Lớp: VNU1001_E252062 &nbsp;·&nbsp; Nhập môn Công nghệ số và Ứng dụng AI
+  </p>
+  
+  <div class="hero-tags">
+    <span class="hero-tag t-light">🗂️ Quản lý tệp</span>
+    <span class="hero-tag t-cool">🔍 Tìm kiếm thông tin</span>
+    <span class="hero-tag t-olive">✍️ Prompt Engineering</span>
+    <span class="hero-tag t-warm">🤝 Hợp tác trực tuyến</span>
+    <span class="hero-tag t-light">🎨 Sáng tạo với AI</span>
+    <span class="hero-tag t-cool">🤖 AI có trách nhiệm</span>
+  </div>
+  
+  <div class="scroll-hint">
+    <span>Khám phá</span>
+    <div class="arrow">↓</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-label">✦ Về Portfolio</span>
+    <h2 class="section-title">Hành trình <em>6 tuần</em> học tập</h2>
+    <p class="section-desc">
+      Portfolio này ghi lại toàn bộ quá trình học tập, thực hành và khám phá của tôi trong môn học
+      <strong>Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo</strong>.
+    </p>
+  </div>
+  
+  <div class="about-grid">
+    <div class="about-card reveal">
+      <h3>🎯 Mục tiêu môn học</h3>
+      <ul>
+        <li>Nắm vững kỹ năng quản lý tệp & thư mục hiệu quả</li>
+        <li>Thành thạo tìm kiếm và đánh giá thông tin học thuật</li>
+        <li>Ứng dụng Prompt Engineering vào học tập</li>
+        <li>Khai thác công cụ hợp tác trực tuyến cho dự án nhóm</li>
+        <li>Sử dụng AI tạo sinh sáng tạo nội dung số</li>
+        <li>Hiểu và thực hành đạo đức khi sử dụng AI</li>
+      </ul>
+    </div>
+    
+    <div class="about-card reveal">
+      <h3>📋 Thông tin Portfolio</h3>
+      <ul>
+        <li><strong>Họ tên:</strong> Lại Minh Ngọc</li>
+        <li><strong>Mã SV:</strong> 25040931</li>
+        <li><strong>Lớp:</strong> VNU1001_E252062</li>
+        <li><strong>Trường:</strong> Đại học Ngoại ngữ – ĐHQGHN</li>
+        <li><strong>Trường:</strong> Đại học Ngoại ngữ – ĐHQGHN</li>
+        <li><strong>Môn học:</strong> Nhập môn Công nghệ số và Ứng dụng Trí tuệ nhân tạo</li>
+        <li><strong>Số tuần:</strong> 6 tuần học & thực hành</li>
+        <li><strong>Hình thức:</strong> Portfolio trực tuyến</li>
+      </ul>
+    </div>
+    
+    <div class="about-card reveal" style="grid-column: 1 / -1; overflow-x: auto;">
+      <h3>📊 Rubric đánh giá</h3>
+      <table class="rubric-table">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Tiêu chí</th>
+            <th>Điểm tối đa</th>
+            <th>Mô tả Mức 4 (Xuất sắc)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td>Thiết kế Portfolio</td><td><span class="score-badge">3</span></td><td>Thiết kế sáng tạo, độc đáo; tích hợp đa phương tiện; tối ưu trải nghiệm.</td></tr>
+          <tr><td>2</td><td>Tuần 1 – Quản lý tệp</td><td><span class="score-badge">1</span></td><td>Cấu trúc khoa học; quy tắc đặt tên sáng tạo; thể hiện hiểu sâu sắc.</td></tr>
+          <tr><td>3</td><td>Tuần 2 – Tìm kiếm</td><td><span class="score-badge">1</span></td><td>Sử dụng linh hoạt toán tử; phân tích rất sâu sắc về chiến lược tìm kiếm.</td></tr>
+          <tr><td>4</td><td>Tuần 3 – Viết Prompt</td><td><span class="score-badge">1</span></td><td>Áp dụng thành thạo Prompt Engineering; so sánh rất sâu sắc cơ chế hoạt động AI.</td></tr>
+          <tr><td>5</td><td>Tuần 4 – Hợp tác nhóm</td><td><span class="score-badge">1</span></td><td>Tích hợp tính năng nâng cao; mô tả chi tiết cách tối ưu hóa quy trình làm việc nhóm.</td></tr>
+          <tr><td>6</td><td>Tuần 5 – Sáng tạo AI</td><td><span class="score-badge">1</span></td><td>Sản phẩm rất chuyên nghiệp, sáng tạo; thể hiện khả năng tận dụng tối đa AI.</td></tr>
+          <tr><td>7</td><td>Tuần 6 – AI có trách nhiệm</td><td><span class="score-badge">1</span></td><td>Bộ nguyên tắc chi tiết; tư duy phản biện cao; đề xuất giải pháp đạo đức.</td></tr>
+          <tr><td>8</td><td>Tổng kết & Đánh giá</td><td><span class="score-badge">1</span></td><td>Phân tích sâu sắc sự trưởng thành và cách áp dụng kỹ năng trong tương lai.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- WEEKS -->
+<section id="weeks">
+  <div class="section-header reveal">
+    <span class="section-label">✦ Nhật ký học tập</span>
+    <h2 class="section-title">6 Tuần <em>thực hành</em></h2>
+    <p class="section-desc">Nhấn vào từng tuần để xem chi tiết hình ảnh minh hoạ và tải xuống nội dung bài tập.</p>
+  </div>
+  <div class="weeks-grid" id="weeksGrid">
+    <!-- Rendered by JS -->
+  </div>
+</section>
+
+<!-- SUMMARY -->
+<section id="summary">
+  <div class="section-header reveal">
+    <span class="section-label">✦ Tổng kết</span>
+    <h2 class="section-title">Nhìn lại <em>hành trình</em></h2>
+    <p class="section-desc">Những gì tôi đã học, đã làm và mang theo sau 6 tuần.</p>
+  </div>
+  
+  <div class="summary-content reveal">
+    <div class="summary-item">
+      <h3>🌱 Những gì tôi đã học</h3>
+      <ul>
+        <li>Tổ chức tệp & thư mục khoa học</li>
+        <li>Kỹ năng tìm kiếm nâng cao (site:, filetype:, "...")</li>
+        <li>Viết Prompt theo cấu trúc vai trò–bối cảnh–yêu cầu</li>
+        <li>Cộng tác nhóm qua nền tảng trực tuyến</li>
+        <li>Sáng tạo nội dung số với AI tạo sinh</li>
+        <li>Nhận thức về đạo đức và trách nhiệm khi dùng AI</li>
+      </ul>
+    </div>
+    
+    <div class="summary-item">
+      <h3>💡 Bài học kinh nghiệm</h3>
+      <ul>
+        <li>Đặt câu hỏi rõ ràng → AI trả lời tốt hơn</li>
+        <li>Tổ chức trước, thực hiện sau – tiết kiệm thời gian</li>
+        <li>Tìm kiếm có chiến lược quan trọng hơn tìm nhiều</li>
+        <li>Hợp tác online cần quy tắc & phân công rõ ràng</li>
+        <li>AI là công cụ – con người làm chủ và chịu trách nhiệm</li>
+      </ul>
+    </div>
+    
+    <div class="skills-grid">
+      <div class="skill-pill"><span class="icon">🗂️</span> Quản lý dữ liệu</div>
+      <div class="skill-pill"><span class="icon">🔍</span> Tìm kiếm nâng cao</div>
+      <div class="skill-pill"><span class="icon">✍️</span> Prompt Engineering</div>
+      <div class="skill-pill"><span class="icon">🤝</span> Hợp tác trực tuyến</div>
+      <div class="skill-pill"><span class="icon">🎨</span> Sáng tạo nội dung AI</div>
+      <div class="skill-pill"><span class="icon">⚖️</span> Đạo đức AI</div>
+    </div>
+    
+    <div class="summary-item" style="grid-column: 1 / -1;">
+      <h3>🚀 Định hướng tương lai</h3>
+      <p>
+        Sau khoá học này, tôi nhận ra rằng việc sử dụng công nghệ một cách thông minh, có trách nhiệm và sáng tạo là kỹ năng cốt lõi của thời đại số. Là sinh viên Đại học Ngoại ngữ – ĐHQGHN, tôi sẽ kết hợp năng lực ngôn ngữ với kỹ năng công nghệ số để nâng cao hiệu quả học tập, nghiên cứu và giao tiếp quốc tế — đặc biệt trong việc khai thác AI như một người bạn đồng hành thông minh và có trách nhiệm.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Lại Minh Ngọc</div>
+  <p>Portfolio Nhập môn Công nghệ số · Đại học Ngoại ngữ – ĐHQGHN · 2026</p>
+  <p style="margin-top:0.7rem;">Làm bằng <span class="heart">♥</span> và niềm đam mê học hỏi</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button class="lightbox-close" id="lbClose" title="Đóng (Esc)">✕</button>
+  <div class="lightbox-week-title" id="lbWeekTitle"></div>
+  <div class="lightbox-main">
+    <button class="lb-arrow" id="lbPrev" title="Ảnh trước">‹</button>
+    <img id="lightbox-img" src="" alt="Ảnh phóng to" />
+    <button class="lb-arrow" id="lbNext" title="Ảnh tiếp theo">›</button>
+  </div>
+  <div class="lightbox-thumbnails" id="lbThumbs"></div>
+  <div id="lightbox-counter"></div>
+</div>
+
+<script>
+/* ===== DATA ===== */
+const WEEKS = [
+  {
+    id: 1,
+    title: "Quản lý tệp và thư mục",
+    subtitle: "Tổ chức & đặt tên khoa học",
+    desc: "Thực hành tạo cấu trúc thư mục logic, đặt tên tệp theo quy tắc nhất quán và quản lý dữ liệu hiệu quả.",
+    tasks: ["Tạo cấu trúc thư mục nhiều cấp", "Áp dụng quy tắc đặt tên tệp", "Thao tác cơ bản với tệp tin"],
+    images: [],
+    reports: [{ label: "📥 Tải bài tập Tuần 1", file: "bai1.docx" }],
+    bg1: "var(--m-warm)", bg2: "var(--m-light)", accent: "var(--m-olive-dk)",
+    emoji: "🗂️",
+  },
+  {
+    id: 2,
+    title: "Tìm kiếm thông tin học thuật",
+    subtitle: "Toán tử nâng cao & tư duy",
+    desc: "Sử dụng các toán tử tìm kiếm nâng cao để tra cứu chính xác và đánh giá độ tin cậy của nguồn thông tin.",
+    tasks: ["Sử dụng toán tử site:, filetype:...", "So sánh kết quả từ nhiều nguồn", "Đánh giá độ tin cậy thông tin"],
+    images: [],
+    reports: [{ label: "📥 Tải bài tập Tuần 2", file: "bai2.docx" }],
+    bg1: "var(--m-cool)", bg2: "var(--m-light)", accent: "var(--m-cool-dk)",
+    emoji: "🔍",
+  },
+  {
+    id: 3,
+    title: "Viết Prompt hiệu quả",
+    subtitle: "Nghệ thuật giao tiếp với AI",
+    desc: "Thực hành viết prompt theo cấu trúc rõ ràng và cải tiến prompt qua nhiều vòng lặp để có kết quả tối ưu.",
+    tasks: ["Viết prompt ban đầu và cải tiến", "So sánh chất lượng phản hồi", "Phân tích cơ chế hoạt động AI"],
+    images: [],
+    reports: [{ label: "📥 Tải bài tập Tuần 3", file: "bai3.docx" }],
+    bg1: "var(--m-olive)", bg2: "var(--m-warm)", accent: "var(--m-olive-dk)",
+    emoji: "✍️",
+  },
+  {
+    id: 4,
+    title: "Hợp tác trực tuyến",
+    subtitle: "Công cụ số & làm việc nhóm",
+    desc: "Ứng dụng các công cụ quản lý dự án và cộng tác online để lên kế hoạch và theo dõi tiến độ nhóm hiệu quả.",
+    tasks: ["Tạo không gian làm việc nhóm", "Phân công nhiệm vụ & tiến độ", "Họp trực tuyến và ghi chép"],
+    images: [],
+    reports: [{ label: "📥 Tải bài tập Tuần 4", file: "bai4.docx" }],
+    bg1: "var(--m-warm)", bg2: "var(--m-cool)", accent: "var(--m-warm-dk)",
+    emoji: "🤝",
+  },
+  {
+    id: 5,
+    title: "Sáng tạo nội dung với AI",
+    subtitle: "Ứng dụng AI tạo sinh",
+    desc: "Sử dụng các công cụ AI để hỗ trợ tạo ra sản phẩm nội dung số chuyên nghiệp, hỗ trợ sáng tạo tối đa.",
+    tasks: ["Lên ý tưởng sáng tạo với AI", "Tạo sinh hình ảnh & nội dung", "Xuất sản phẩm hoàn chỉnh"],
+    images: [],
+    reports: [{ label: "📥 Tải bài tập Tuần 5", file: "bai5.docx" }],
+    bg1: "var(--m-light)", bg2: "var(--m-olive)", accent: "var(--m-base)",
+    emoji: "🎨",
+  },
+  {
+    id: 6,
+    title: "AI có trách nhiệm",
+    subtitle: "Đạo đức & nguyên tắc sử dụng",
+    desc: "Xây dựng bộ nguyên tắc cá nhân khi sử dụng AI, phân tích rủi ro và đề xuất giải pháp có trách nhiệm.",
+    tasks: ["Xây dựng bộ nguyên tắc cá nhân", "Phân tích các rủi ro của AI", "Đề xuất giải pháp sử dụng an toàn"],
+    images: [],
+    reports: [{ label: "📥 Tải bài tập Tuần 6", file: "bai6.docx" }],
+    bg1: "var(--m-cool)", bg2: "var(--m-light)", accent: "var(--m-cool-dk)",
+    emoji: "⚖️",
+  }
+];
+
+const extraImages = { 1:[], 2:[], 3:[], 4:[], 5:[], 6:[] };
+
+/* ===== RENDER WEEKS ===== */
+function renderWeeks() {
+  const grid = document.getElementById('weeksGrid');
+  grid.innerHTML = '';
+  WEEKS.forEach((week, idx) => {
+    const card = document.createElement('div');
+    card.className = 'week-card reveal';
+    card.id = `week-card-${week.id}`;
+    card.style.setProperty('--week-bg1', week.bg1);
+    card.style.setProperty('--week-bg2', week.bg2);
+    card.style.setProperty('--week-accent', week.accent);
+    
+    const allImgs = [...week.images, ...extraImages[week.id]];
+    const imgCount = allImgs.length;
+    
+    const stripHTML = imgCount > 0
+      ? `<div class="gallery-strip" id="strip-${week.id}">
+          ${allImgs.map((src, i) => `<img src="${src}" onclick="openLightbox(${idx}, ${i})" />`).join('')}
+         </div>`
+      : `<p class="no-images" id="no-img-${week.id}">📄 Tuần này bao gồm báo cáo văn bản (docx)</p>`;
+      
+    card.innerHTML = `
+      <div class="week-header">
+        <div class="week-number-badge"><span class="wn-label">Tuần</span><span class="wn-num">${week.id}</span></div>
+        <div class="week-header-text">
+          <div class="week-title">${week.emoji} ${week.title}</div>
+          <div class="week-subtitle">${week.subtitle}</div>
+        </div>
+      </div>
+      <div class="week-body">
+        <p class="week-desc">${week.desc}</p>
+        <ul class="week-tasks">
+          ${week.tasks.map(t => `<li><span class="dot"></span>${t}</li>`).join('')}
+        </ul>
+      </div>
+      ${stripHTML}
+      <div class="report-area">
+        ${week.reports.map(r => `<a class="report-btn" href="${encodeURI(r.file)}" download><span class="rb-icon">⬇️</span>${r.label}</a>`).join('')}
+      </div>
+      <button class="add-photo-btn" onclick="document.getElementById('upload-${week.id}').click()">📷 Thêm ảnh</button>
+      <input type="file" accept="image/*" multiple class="hidden-file-input" id="upload-${week.id}" onchange="handleUpload(event, ${week.id})" />
+      <div class="week-footer">
+        <span class="image-count" id="count-${week.id}">📷 ${imgCount > 0 ? imgCount + ' ảnh minh hoạ' : 'Báo cáo văn bản'}</span>
+        ${imgCount > 0 ? `<button class="view-btn" onclick="openLightbox(${idx}, 0)">Xem tất cả →</button>` : `<span id="viewbtn-${week.id}"></span>`}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+function handleUpload(event, weekId) {
+  const files = Array.from(event.target.files);
+  files.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      extraImages[weekId].push(e.target.result);
+      renderWeeks();
+      setTimeout(initReveal, 50);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+/* ===== LIGHTBOX ===== */
+let lbWeekIndex = 0;
+let lbImgIndex  = 0;
+
+function openLightbox(weekIdx, imgIdx) {
+  lbWeekIndex = weekIdx;
+  lbImgIndex  = imgIdx;
+  renderLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderLightbox() {
+  const week = WEEKS[lbWeekIndex];
+  const imgs = [...week.images, ...extraImages[week.id]];
+  if (!imgs.length) return;
+  
+  document.getElementById('lightbox-img').src = imgs[lbImgIndex];
+  document.getElementById('lbWeekTitle').textContent = `✦ Tuần ${week.id}: ${week.title}`;
+  document.getElementById('lightbox-counter').textContent = `${lbImgIndex + 1} / ${imgs.length}`;
+  
+  document.getElementById('lbThumbs').innerHTML = imgs.map((s, i) => 
+    `<img src="${s}" class="${i === lbImgIndex ? 'active' : ''}" onclick="jumpLb(${i})" />`
+  ).join('');
+}
+
+function jumpLb(i) { lbImgIndex = i; renderLightbox(); }
+function lbNext() {
+  const len = [...WEEKS[lbWeekIndex].images, ...extraImages[WEEKS[lbWeekIndex].id]].length;
+  lbImgIndex = (lbImgIndex + 1) % len; renderLightbox();
+}
+function lbPrev() {
+  const len = [...WEEKS[lbWeekIndex].images, ...extraImages[WEEKS[lbWeekIndex].id]].length;
+  lbImgIndex = (lbImgIndex - 1 + len) % len; renderLightbox();
+}
+
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+document.getElementById('lbNext').addEventListener('click', lbNext);
+document.getElementById('lbPrev').addEventListener('click', lbPrev);
+
+/* ===== SCROLL REVEAL ===== */
+let observer;
+function initReveal() {
+  if (observer) observer.disconnect();
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}
+
+/* ===== LEAVES ===== */
+function spawnPetals() {
+  const container = document.getElementById('petalsContainer');
+  const colors = ['#dcecd1', '#e8edcc', '#d2e8e3', '#d6dec3'];
+  for (let i = 0; i < 20; i++) {
+    const leaf = document.createElement('div');
+    leaf.className = 'petal';
+    leaf.style.left = Math.random() * 100 + 'vw';
+    leaf.style.background = colors[Math.floor(Math.random() * colors.length)];
+    leaf.style.animationDuration = (8 + Math.random() * 10) + 's';
+    leaf.style.animationDelay = (Math.random() * 10) + 's';
+    leaf.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.7 + Math.random() * 0.6})`;
+    container.appendChild(leaf);
+  }
+}
+
+/* ===== INIT ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  renderWeeks();
+  setTimeout(initReveal, 100);
+  spawnPetals();
+});
+</script>
+</body>
+</html>
