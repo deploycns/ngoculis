@@ -116,7 +116,7 @@ body{font-family:'Be Vietnam Pro',sans-serif;background:var(--bg);color:var(--tx
 /* ABOUT GRID */
 .ag{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
 /* STATS */
-.sb{grid-column:1/-1;background:linear-gradient(135deg,var(--c3),var(--cool2),var(--olive2));border-radius:var(--r);padding:2.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;position:relative;overflow:hidden;box-shadow:var(--sh2)}
+.sb{grid-column:1/-1;background:linear-gradient(135deg,var(--c3),var(--cool2),var(--olive2));border-radius:var(--r);padding:2.5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;position:relative;overflow:hidden;box-shadow:var(--sh2)}
 .sb::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/svg%3E")}
 .si{text-align:center;position:relative;z-index:1}
 .sn{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:900;color:#fff;line-height:1;text-shadow:0 2px 12px rgba(0,0,0,.15)}
@@ -308,22 +308,21 @@ footer::before{content:'';position:absolute;inset:0;background:radial-gradient(e
     <div class="sb rv d2">
       <div class="si"><div class="sn" data-count="6">0</div><div class="sl">Tuần học</div></div>
       <div class="si"><div class="sn" data-count="6">0</div><div class="sl">Bài tập nộp</div></div>
-      <div class="si"><div class="sn" data-count="9">0</div><div class="sl">Điểm tối đa</div></div>
       <div class="si"><div class="sn" data-count="100">0</div><div class="sl">% Hoàn thành</div></div>
     </div>
     <div class="rw rv d3">
       <div class="rt">📊 Rubric đánh giá Portfolio</div>
       <table>
-        <thead><tr><th>STT</th><th>Tiêu chí</th><th>Điểm</th><th>Mô tả Mức 4 (Xuất sắc)</th></tr></thead>
+        <thead><tr><th>STT</th><th>Tiêu chí</th><th>Mô tả Mức 4 (Xuất sắc)</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td>Thiết kế Portfolio</td><td><span class="sp">3</span></td><td>Sáng tạo, độc đáo; tích hợp đa phương tiện; tối ưu trải nghiệm.</td></tr>
-          <tr><td>2</td><td>Tuần 1 – Quản lý tệp</td><td><span class="sp">1</span></td><td>Cấu trúc khoa học; quy tắc đặt tên sáng tạo; hiểu sâu sắc.</td></tr>
-          <tr><td>3</td><td>Tuần 2 – Tìm kiếm</td><td><span class="sp">1</span></td><td>Sử dụng linh hoạt toán tử; phân tích chiến lược tìm kiếm sâu.</td></tr>
-          <tr><td>4</td><td>Tuần 3 – Viết Prompt</td><td><span class="sp">1</span></td><td>Áp dụng Prompt Engineering; so sánh cơ chế hoạt động AI.</td></tr>
-          <tr><td>5</td><td>Tuần 4 – Hợp tác nhóm</td><td><span class="sp">1</span></td><td>Tích hợp tính năng nâng cao; tối ưu quy trình nhóm.</td></tr>
-          <tr><td>6</td><td>Tuần 5 – Sáng tạo AI</td><td><span class="sp">1</span></td><td>Sản phẩm chuyên nghiệp; tận dụng tối đa AI sáng tạo.</td></tr>
-          <tr><td>7</td><td>Tuần 6 – AI có trách nhiệm</td><td><span class="sp">1</span></td><td>Bộ nguyên tắc chi tiết; tư duy phản biện cao.</td></tr>
-          <tr><td>8</td><td>Tổng kết &amp; Đánh giá</td><td><span class="sp">1</span></td><td>Phân tích sâu sắc sự trưởng thành và định hướng tương lai.</td></tr>
+          <tr><td>1</td><td>Thiết kế Portfolio</td><td>Sáng tạo, độc đáo; tích hợp đa phương tiện; tối ưu trải nghiệm.</td></tr>
+          <tr><td>2</td><td>Tuần 1 – Quản lý tệp</td><td>Cấu trúc khoa học; quy tắc đặt tên sáng tạo; hiểu sâu sắc.</td></tr>
+          <tr><td>3</td><td>Tuần 2 – Tìm kiếm</td><td>Sử dụng linh hoạt toán tử; phân tích chiến lược tìm kiếm sâu.</td></tr>
+          <tr><td>4</td><td>Tuần 3 – Viết Prompt</td><td>Áp dụng Prompt Engineering; so sánh cơ chế hoạt động AI.</td></tr>
+          <tr><td>5</td><td>Tuần 4 – Hợp tác nhóm</td><td>Tích hợp tính năng nâng cao; tối ưu quy trình nhóm.</td></tr>
+          <tr><td>6</td><td>Tuần 5 – Sáng tạo AI</td><td>Sản phẩm chuyên nghiệp; tận dụng tối đa AI sáng tạo.</td></tr>
+          <tr><td>7</td><td>Tuần 6 – AI có trách nhiệm</td><td>Bộ nguyên tắc chi tiết; tư duy phản biện cao.</td></tr>
+          <tr><td>8</td><td>Tổng kết &amp; Đánh giá</td><td>Phân tích sâu sắc sự trưởng thành và định hướng tương lai.</td></tr>
         </tbody>
       </table>
     </div>
