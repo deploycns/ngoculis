@@ -172,11 +172,48 @@ tbody tr:last-child td{border-bottom:none}
 .ab-view.popen::before{opacity:1}
 .ab-dl{background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.7));border:1.5px solid var(--ca);color:var(--txt)}
 .ab-photo{background:linear-gradient(135deg,rgba(255,255,255,.9),rgba(255,255,255,.7));border:1.5px dashed var(--ca);color:var(--txt)}
-/* PDF panel */
-.pp{max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.4,0,.2,1);margin:0 1.8rem}
-.pp.open{max-height:720px}
-.ppw{border-radius:14px;overflow:hidden;border:1.5px solid rgba(163,201,149,.35);box-shadow:0 4px 24px rgba(80,120,60,.12);background:#fff;margin-bottom:1rem}
-.ppw iframe{width:100%;height:680px;border:none;display:block}
+/* PDF content styles */
+.pdf-h2{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:900;color:var(--c4);background:linear-gradient(135deg,rgba(163,201,149,.18),rgba(208,234,229,.18));border-left:4px solid var(--ca);padding:.55rem 1rem;margin:1.2rem 0 .6rem;border-radius:0 10px 10px 0;letter-spacing:.04em;text-transform:uppercase;font-size:.82rem}
+.pdf-h3{font-family:'Playfair Display',serif;font-size:.98rem;font-weight:700;color:var(--txt);margin:.9rem 0 .5rem;padding:.35rem 0;border-bottom:1.5px dashed rgba(163,201,149,.3)}
+.pdf-p{font-size:.87rem;color:var(--txt2);line-height:1.82;margin:.4rem 0}
+.pdf-item{display:flex;gap:.7rem;margin:.45rem 0;align-items:flex-start}
+.pdf-num{background:linear-gradient(135deg,var(--ca),var(--s2,var(--ca)));color:#fff;min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;flex-shrink:0;margin-top:1px;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.pdf-item-body{font-size:.87rem;color:var(--txt2);line-height:1.75;flex:1}
+.pdf-bullet{display:flex;gap:.6rem;margin:.3rem 0;align-items:flex-start}
+.pdf-bullet .pdf-dot{color:var(--ca);font-size:1.1rem;line-height:1.4;flex-shrink:0}
+.pdf-bullet span:last-child{font-size:.87rem;color:var(--txt2);line-height:1.75}
+.pdf-section{margin:.5rem 0}
+.pdf-img-wrap{margin:1rem 0;text-align:center}
+.pdf-img{max-width:100%;height:auto;border-radius:14px;box-shadow:0 4px 24px rgba(80,120,60,.14);border:1.5px solid rgba(163,201,149,.25);cursor:zoom-in;transition:transform var(--t),box-shadow var(--t)}
+.pdf-img:hover{transform:scale(1.015);box-shadow:0 8px 40px rgba(80,120,60,.22)}
+.pdf-content-body{max-height:none}
+/* CONTENT PANEL */
+.cp{max-height:0;overflow:hidden;transition:max-height .8s cubic-bezier(.4,0,.2,1);margin:0 1.2rem}
+.cp.open{max-height:9999px}
+.cpw{border-radius:18px;border:1.5px solid rgba(163,201,149,.3);box-shadow:0 4px 28px rgba(80,120,60,.11);background:rgba(255,255,255,.85);backdrop-filter:blur(16px);margin-bottom:1.2rem;overflow:hidden}
+/* Tab bar */
+.ctabs{display:flex;border-bottom:1.5px solid rgba(163,201,149,.2);background:linear-gradient(135deg,rgba(220,236,209,.5),rgba(208,234,229,.4))}
+.ctab{flex:1;padding:.7rem .5rem;text-align:center;font-size:.78rem;font-weight:700;letter-spacing:.05em;color:var(--txt3);cursor:pointer;border:none;background:none;font-family:inherit;transition:var(--t);border-bottom:2.5px solid transparent;position:relative}
+.ctab.act{color:var(--c4);border-bottom-color:var(--ca)}
+.ctab:hover{color:var(--txt);background:rgba(163,201,149,.12)}
+/* Tab content */
+.ctbody{padding:1.6rem 1.8rem}
+.ctpanel{display:none}.ctpanel.act{display:block}
+/* Content items */
+.cbox{background:rgba(255,255,255,.7);border:1px solid rgba(163,201,149,.22);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:.9rem}
+.cbox:last-child{margin-bottom:0}
+.cbox-h{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--txt);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem}
+.cbox-h .ico{font-size:1.1rem}
+.cbox p{font-size:.87rem;color:var(--txt2);line-height:1.8;margin-bottom:.55rem}
+.cbox p:last-child{margin-bottom:0}
+.clist{list-style:none;display:flex;flex-direction:column;gap:.45rem;margin-top:.4rem}
+.clist li{display:flex;align-items:flex-start;gap:.6rem;font-size:.85rem;color:var(--txt2);line-height:1.65}
+.clist li::before{content:'✦';color:var(--ca);font-size:.6rem;margin-top:5px;flex-shrink:0}
+.ctag{display:inline-flex;align-items:center;gap:.3rem;padding:.22rem .75rem;border-radius:50px;font-size:.75rem;font-weight:600;background:rgba(163,201,149,.18);border:1px solid rgba(163,201,149,.3);color:var(--c4);margin:.2rem .15rem}
+.cresult{background:linear-gradient(135deg,rgba(163,201,149,.15),rgba(208,234,229,.15));border:1px solid rgba(163,201,149,.25);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:.9rem}
+.cresult-lbl{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--c3);margin-bottom:.5rem}
+.cresult p{font-size:.87rem;color:var(--txt2);line-height:1.75}
+.cquote{border-left:3px solid var(--ca);padding:.8rem 1rem;background:rgba(163,201,149,.08);border-radius:0 12px 12px 0;font-size:.87rem;color:var(--txt2);line-height:1.75;font-style:italic;margin:.6rem 0}
 /* Card footer */
 .wcf{padding:.9rem 1.8rem 1.5rem;display:flex;align-items:center;justify-content:flex-end;border-top:1px dashed rgba(163,201,149,.25)}
 .sbadge{display:inline-flex;align-items:center;gap:.35rem;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c3);background:rgba(163,201,149,.18);border-radius:50px;padding:.25rem .8rem}
@@ -411,32 +448,74 @@ const WKS=[
    d:'Thực hành tạo cấu trúc thư mục logic, áp dụng quy tắc đặt tên tệp nhất quán và quản lý dữ liệu cá nhân hiệu quả.',
    tasks:['Tạo cấu trúc thư mục nhiều cấp theo chủ đề','Áp dụng quy tắc đặt tên tệp chuẩn hoá','Thực hiện các thao tác cơ bản với tệp tin'],
    pdf:'bai1.pdf',b1:'rgba(238,243,208,.9)',b2:'rgba(220,236,209,.9)',ca:'hsl(78,50%,45%)',s1:'#b0c44e',s2:'#7a9a2e',imgs:[],pct:100,
-   tld:'Khám phá cách tổ chức dữ liệu khoa học, xây dựng thói quen đặt tên tệp chuẩn và hiểu tầm quan trọng của quản lý thông tin số.'},
+   tld:'Khám phá cách tổ chức dữ liệu khoa học, xây dựng thói quen đặt tên tệp chuẩn và hiểu tầm quan trọng của quản lý thông tin số.',
+   content:{
+     overview:'<p>Trong bài học đầu tiên, tôi khám phá tầm quan trọng của việc tổ chức tệp tin và thư mục một cách khoa học. Quản lý thông tin số là nền tảng của mọi công việc học tập và nghiên cứu hiệu quả.</p><p>Tôi đã xây dựng một hệ thống thư mục cá nhân hoàn chỉnh, áp dụng các nguyên tắc đặt tên chuẩn hoá và thực hành các thao tác quản lý tệp tin cơ bản đến nâng cao.</p>',
+     tags:['Windows Explorer','File naming','Folder structure','Metadata','Backup'],
+     done:['<strong>Tạo cây thư mục</strong> 4 cấp theo chủ đề: Học tập / Môn học / Chủ đề / Bài tập — đảm bảo mỗi tệp có đúng nơi thuộc về.','<strong>Áp dụng quy tắc đặt tên</strong>: viết thường, không dấu, dùng gạch ngang (-) thay khoảng trắng. Ví dụ: <em>2026-01-bai-tap-quan-ly-tep.docx</em>','<strong>Thực hành thao tác tệp</strong>: tạo, sao chép, di chuyển, đổi tên, xoá an toàn bằng Recycle Bin.','<strong>So sánh cấu trúc trước & sau</strong> khi áp dụng nguyên tắc tổ chức — thấy rõ sự khác biệt về hiệu quả tìm kiếm.'],
+     result:'Tôi nhận ra rằng một cấu trúc thư mục tốt tiết kiệm hàng giờ tìm kiếm mỗi tuần. Quy tắc đặt tên nhất quán giúp tôi tìm thấy bất kỳ tệp nào trong vòng vài giây — đây là kỹ năng mà tôi áp dụng ngay lập tức cho tất cả các môn học khác.',
+     quote:'"Một tệp được đặt tên đúng là một tệp không bao giờ bị mất."'
+   }},
   {id:2,e:'🔍',t:'Tìm kiếm thông tin học thuật',s:'Toán tử nâng cao & tư duy phản biện',
    d:'Sử dụng các toán tử tìm kiếm nâng cao để tra cứu chính xác, đánh giá độ tin cậy và so sánh nguồn thông tin đa chiều.',
    tasks:['Sử dụng toán tử site:, filetype:, AND/OR…','So sánh kết quả từ nhiều nguồn khác nhau','Đánh giá độ tin cậy của thông tin tìm thấy'],
    pdf:'bai2.pdf',b1:'rgba(208,234,229,.9)',b2:'rgba(220,236,209,.9)',ca:'hsl(168,38%,45%)',s1:'#72b5a4',s2:'#3d8078',imgs:[],pct:100,
-   tld:'Nắm vững kỹ thuật tìm kiếm nâng cao, biết cách đánh giá và lọc thông tin đáng tin cậy trong biển dữ liệu của internet.'},
+   tld:'Nắm vững kỹ thuật tìm kiếm nâng cao, biết cách đánh giá và lọc thông tin đáng tin cậy trong biển dữ liệu của internet.',
+   content:{
+     overview:'<p>Bài học thứ hai mở ra kỹ năng tìm kiếm thông tin một cách có chiến lược. Không chỉ gõ từ khoá đơn giản, tôi học cách sử dụng các toán tử tìm kiếm để thu hẹp kết quả và tìm đúng nguồn tin đáng tin cậy.</p><p>Kỹ năng này đặc biệt quan trọng trong thời đại thông tin bùng nổ, khi phân biệt thật giả trở thành thách thức hàng ngày.</p>',
+     tags:['Google Scholar','site:','filetype:','Boolean search','Fact-checking','Wikipedia'],
+     done:['<strong>Toán tử nâng cao</strong>: site:edu để giới hạn nguồn học thuật, filetype:pdf để tìm tài liệu gốc, AND/OR/NOT để kết hợp điều kiện.','<strong>Google Scholar</strong>: tìm bài báo khoa học, lọc theo năm xuất bản, xem số lần trích dẫn để đánh giá uy tín.','<strong>Đánh giá độ tin cậy</strong> bằng tiêu chí CRAAP (Currency, Relevance, Authority, Accuracy, Purpose).','<strong>So sánh đa nguồn</strong>: cùng một chủ đề, tìm ít nhất 3 nguồn khác nhau và đối chiếu thông tin.'],
+     result:'Tôi không còn chấp nhận kết quả đầu tiên Google trả về. Giờ tôi biết đặt câu hỏi: Ai viết? Khi nào? Mục đích gì? Có bằng chứng không? Kỹ năng này giúp tôi viết bài báo cáo chất lượng hơn và tránh bẫy thông tin sai lệch.',
+     quote:'"Một câu hỏi tốt hơn tìm kiếm tốt hơn — hãy đặt đúng câu hỏi trước khi gõ phím."'
+   }},
   {id:3,e:'✍️',t:'Viết Prompt hiệu quả',s:'Nghệ thuật giao tiếp với AI',
    d:'Thực hành viết prompt theo cấu trúc rõ ràng, lặp và cải tiến qua nhiều vòng để đạt kết quả tối ưu từ các mô hình AI.',
    tasks:['Viết prompt ban đầu và phân tích kết quả','Cải tiến prompt qua nhiều vòng lặp','So sánh chất lượng phản hồi và phân tích AI'],
    pdf:'bai3.pdf',b1:'rgba(216,223,191,.9)',b2:'rgba(238,243,208,.9)',ca:'hsl(88,38%,42%)',s1:'#a3c995',s2:'#5e8a48',imgs:[],pct:100,
-   tld:'Khám phá nghệ thuật Prompt Engineering — cách đặt câu hỏi đúng cách để AI cho ra những câu trả lời chính xác và hữu ích nhất.'},
+   tld:'Khám phá nghệ thuật Prompt Engineering — cách đặt câu hỏi đúng cách để AI cho ra những câu trả lời chính xác và hữu ích nhất.',
+   content:{
+     overview:'<p>Prompt Engineering là kỹ năng giao tiếp với AI — nghệ thuật đặt câu hỏi đúng để nhận được câu trả lời chính xác, hữu ích và phù hợp với mục đích.</p><p>Tôi thực hành viết prompt qua nhiều vòng lặp, từ câu đơn giản đến câu phức tạp với vai trò, ngữ cảnh và yêu cầu cụ thể.</p>',
+     tags:['ChatGPT','Gemini','Role prompting','Few-shot','Chain-of-thought','Iteration'],
+     done:['<strong>Cấu trúc prompt cơ bản</strong>: [Vai trò] + [Ngữ cảnh] + [Yêu cầu cụ thể] + [Định dạng đầu ra].','<strong>So sánh 3 mô hình</strong>: ChatGPT, Gemini, Claude — cùng một prompt nhưng phong cách phản hồi khác nhau ra sao?','<strong>Kỹ thuật few-shot</strong>: đưa ví dụ mẫu vào prompt để AI hiểu đúng định dạng tôi cần.','<strong>Prompt vòng lặp</strong>: Viết → Đánh giá → Cải tiến → Lặp lại cho đến khi đạt chất lượng mong muốn.'],
+     result:'Tôi nhận ra AI không đọc được tâm trí — nó chỉ trả lời đúng những gì bạn hỏi. Sau bài này, thời gian tôi dùng để chỉnh sửa kết quả AI giảm đi 60% vì tôi viết prompt rõ ràng hơn ngay từ đầu.',
+     quote:'"AI thông minh chỉ khi bạn đủ rõ ràng — hãy nghĩ trước khi viết."'
+   }},
   {id:4,e:'🤝',t:'Hợp tác trực tuyến',s:'Công cụ số & làm việc nhóm',
    d:'Ứng dụng các công cụ quản lý dự án và cộng tác online để lên kế hoạch, phân công nhiệm vụ và theo dõi tiến độ nhóm hiệu quả.',
    tasks:['Tạo không gian làm việc nhóm trực tuyến','Phân công nhiệm vụ & theo dõi tiến độ','Tổ chức họp trực tuyến và ghi chép kết quả'],
    pdf:'bai4.pdf',b1:'rgba(238,243,208,.9)',b2:'rgba(208,234,229,.9)',ca:'hsl(60,55%,42%)',s1:'#c9d46d',s2:'#8f9e30',imgs:[],pct:100,
-   tld:'Trải nghiệm làm việc nhóm trong môi trường số, học cách sử dụng công cụ cộng tác để tối ưu hoá năng suất và giao tiếp nhóm.'},
+   tld:'Trải nghiệm làm việc nhóm trong môi trường số, học cách sử dụng công cụ cộng tác để tối ưu hoá năng suất và giao tiếp nhóm.',
+   content:{
+     overview:'<p>Bài học về hợp tác trực tuyến giúp tôi hiểu rằng làm việc nhóm hiệu quả cần hơn là chỉ chia sẻ tài liệu — nó đòi hỏi quy trình, công cụ và quy tắc giao tiếp rõ ràng.</p><p>Nhóm tôi đã thực hành xây dựng không gian làm việc số hoàn chỉnh và hoàn thành một dự án nhỏ cùng nhau.</p>',
+     tags:['Google Workspace','Notion','Trello','Zoom','Google Meet','Shared docs'],
+     done:['<strong>Thiết lập workspace</strong>: tạo Google Drive nhóm với phân quyền rõ ràng (Xem / Bình luận / Chỉnh sửa).','<strong>Quản lý task</strong>: dùng Trello để tạo board Kanban với các cột: To Do → In Progress → Review → Done.','<strong>Họp trực tuyến</strong>: lên lịch qua Google Calendar, họp qua Google Meet, ghi chép bằng Google Docs theo thời gian thực.','<strong>Tổng kết nhóm</strong>: viết biên bản họp, phân công nhiệm vụ tiếp theo và đặt deadline cụ thể.'],
+     result:'Tôi nhận ra sự khác biệt giữa nhóm làm việc hiệu quả và không hiệu quả nằm ở sự rõ ràng trong phân công và giao tiếp. Công cụ số chỉ là phương tiện — quy tắc và thái độ mới quyết định thành công.',
+     quote:'"Phối hợp tốt không phải ngẫu nhiên — nó cần được thiết kế."'
+   }},
   {id:5,e:'🎨',t:'Sáng tạo nội dung với AI',s:'Ứng dụng AI tạo sinh',
    d:'Sử dụng các công cụ AI tạo sinh để lên ý tưởng, sáng tạo hình ảnh và nội dung số chuyên nghiệp một cách nhanh chóng.',
    tasks:['Lên ý tưởng sáng tạo cùng AI','Tạo sinh hình ảnh & nội dung văn bản','Hoàn thiện và xuất sản phẩm hoàn chỉnh'],
    pdf:'bai5.pdf',b1:'rgba(220,236,209,.9)',b2:'rgba(216,223,191,.9)',ca:'hsl(118,42%,42%)',s1:'#a3c995',s2:'#4a8a3c',imgs:[],pct:100,
-   tld:'Bước vào thế giới sáng tạo cùng AI tạo sinh — khai thác sức mạnh của các mô hình ngôn ngữ và hình ảnh để tạo ra sản phẩm độc đáo.'},
+   tld:'Bước vào thế giới sáng tạo cùng AI tạo sinh — khai thác sức mạnh của các mô hình ngôn ngữ và hình ảnh để tạo ra sản phẩm độc đáo.',
+   content:{
+     overview:'<p>Trí tuệ nhân tạo tạo sinh (Generative AI) đang thay đổi cách chúng ta tạo ra nội dung. Trong bài này, tôi khám phá cách kết hợp AI vào quy trình sáng tạo để nâng cao chất lượng và tốc độ làm việc.</p><p>Tôi thực hành với nhiều công cụ AI khác nhau để tạo văn bản, hình ảnh và trình bày chuyên nghiệp.</p>',
+     tags:['Midjourney','DALL-E','Canva AI','ChatGPT','Gemini','Adobe Firefly'],
+     done:['<strong>Lên ý tưởng</strong>: dùng AI như "người cộng tác" — brainstorming chủ đề, phác thảo cấu trúc, đề xuất góc nhìn mới lạ.','<strong>Tạo sinh hình ảnh</strong>: thực hành với Canva AI và các công cụ text-to-image, học cách viết image prompt chi tiết.','<strong>Tạo nội dung văn bản</strong>: soạn thảo bài viết với AI, học cách chỉnh sửa và đưa giọng văn cá nhân vào sản phẩm.','<strong>Sản phẩm hoàn chỉnh</strong>: kết hợp văn bản + hình ảnh + bố cục để tạo ra một ấn phẩm số trông chuyên nghiệp.'],
+     result:'AI không thay thế sự sáng tạo của con người — nó khuếch đại nó. Tôi học được cách làm chủ công cụ thay vì bị công cụ dẫn dắt, và tầm quan trọng của việc luôn kiểm tra và chỉnh sửa kết quả AI.',
+     quote:'"AI giỏi nhất khi bạn biết mình muốn gì — hãy giữ vai trò đạo diễn, không phải diễn viên phụ."'
+   }},
   {id:6,e:'⚖️',t:'AI có trách nhiệm',s:'Đạo đức & nguyên tắc sử dụng',
    d:'Xây dựng bộ nguyên tắc cá nhân khi sử dụng AI, phân tích các rủi ro tiềm ẩn và đề xuất giải pháp sử dụng có trách nhiệm.',
    tasks:['Xây dựng bộ nguyên tắc sử dụng AI cá nhân','Phân tích các rủi ro và thách thức của AI','Đề xuất giải pháp và phương pháp sử dụng an toàn'],
    pdf:'bai6.pdf',b1:'rgba(208,234,229,.9)',b2:'rgba(220,236,209,.9)',ca:'hsl(168,38%,40%)',s1:'#72b5a4',s2:'#2a7068',imgs:[],pct:100,
-   tld:'Khép lại hành trình bằng việc suy nghĩ sâu về trách nhiệm đạo đức — xây dựng nền tảng để sử dụng AI một cách thông minh, an toàn và có ý thức.'}
+   tld:'Khép lại hành trình bằng việc suy nghĩ sâu về trách nhiệm đạo đức — xây dựng nền tảng để sử dụng AI một cách thông minh, an toàn và có ý thức.',
+   content:{
+     overview:'<p>Bài học cuối khép lại hành trình bằng những câu hỏi quan trọng nhất: AI đang thay đổi thế giới như thế nào? Chúng ta có trách nhiệm gì khi sử dụng công nghệ này?</p><p>Tôi phân tích các rủi ro thực tế và xây dựng bộ nguyên tắc cá nhân để sử dụng AI một cách có trách nhiệm.</p>',
+     tags:['AI Ethics','Deepfake','Privacy','Bias','Copyright','Digital citizenship'],
+     done:['<strong>Phân tích rủi ro</strong>: deepfake, hallucination (AI bịa đặt thông tin), thiên kiến dữ liệu, vi phạm quyền riêng tư.','<strong>5 nguyên tắc cá nhân</strong>: (1) Luôn kiểm chứng thông tin AI cung cấp; (2) Không dùng AI để gian lận học thuật; (3) Bảo vệ thông tin cá nhân khi dùng AI; (4) Ghi nguồn khi sử dụng nội dung AI tạo ra; (5) Suy nghĩ phản biện trước khi tin vào kết quả AI.','<strong>Nghiên cứu tình huống</strong>: phân tích các vụ việc thực tế về lạm dụng AI và bài học rút ra.','<strong>Cam kết cá nhân</strong>: viết bản tuyên ngôn ngắn về cách tôi sẽ sử dụng AI có trách nhiệm trong học tập và cuộc sống.'],
+     result:'Bài học này thay đổi cách tôi nhìn nhận AI từ "công cụ thần kỳ" thành "công nghệ mạnh mẽ cần dùng cẩn thận". Tôi ra về với nhận thức rõ ràng hơn về quyền và trách nhiệm của mình trong thế giới số.',
+     quote:'"Sức mạnh lớn đi kèm trách nhiệm lớn — AI không phải ngoại lệ."'
+   }}
 ];
 const SKILLS=[
   {i:'🗂️',n:'Quản lý dữ liệu',c1:'#b0c44e',c2:'#7a9a2e',p:.88},
@@ -494,12 +573,12 @@ function renderWKS(){
     c.className='wc rv';c.id='wc'+w.id;
     c.style.setProperty('--cb1',w.b1);c.style.setProperty('--cb2',w.b2);c.style.setProperty('--ca',w.ca);
     const gal=ai.length>0
-      ?`<div style="display:flex;gap:6px;overflow-x:auto;padding:1rem 1.8rem;scrollbar-width:thin;">${ai.map((src,i)=>`<img src="${src}" style="width:88px;height:68px;object-fit:cover;border-radius:10px;flex-shrink:0;cursor:pointer;border:2px solid transparent;transition:var(--t);" onclick="openLB(${idx},${i})"/>`).join('')}</div>`
+      ?`<div style="display:flex;gap:6px;overflow-x:auto;padding:.8rem 1.8rem 0;scrollbar-width:thin;">${ai.map((src,i)=>`<img src="${src}" style="width:88px;height:68px;object-fit:cover;border-radius:10px;flex-shrink:0;cursor:pointer;border:2px solid transparent;transition:var(--t);" onclick="openLB(${idx},${i})"/>`).join('')}</div>`
       :'';
     c.innerHTML=`
       <div class="wch"><div class="wchg"></div><div class="wchg2"></div>
         <div class="wct">
-          <div class="wcb"><span class="wn">${w.id}</span><span class="wl">Bài</span></div>
+          <div class="wcb"><span class="wn">${w.id}</span><span class="wl">B\u00e0i</span></div>
           <div class="wci"><div class="wctt">${w.e} ${w.t}</div><div class="wcsb">${w.s}</div></div>
         </div>
       </div>
@@ -508,40 +587,51 @@ function renderWKS(){
         <ul class="wcta">${w.tasks.map(t=>`<li><span class="td"></span>${t}</li>`).join('')}</ul>
       </div>
       <div class="wcp">
-        <div class="wcpl"><span>Tiến độ hoàn thành</span><span>${w.pct}%</span></div>
+        <div class="wcpl"><span>Ti\u1ebfn \u0111\u1ed9 ho\u00e0n th\u00e0nh</span><span>${w.pct}%</span></div>
         <div class="wcpt"><div class="wcpf" style="background:linear-gradient(90deg,${w.s1},${w.s2})" data-p="${w.pct/100}"></div></div>
       </div>
       ${gal}
       <div class="wda">
-        <button class="ab ab-view" id="vb${w.id}" onclick="togglePDF(${w.id})">
-          <span>👁</span><span>Xem bài tập</span>
+        <button class="ab ab-view" id="vb${w.id}" onclick="toggleContent(${w.id})">
+          <span>\ud83d\udcd6</span><span>Xem n\u1ed9i dung b\u00e0i</span>
         </button>
-        <a class="ab ab-dl" href="${encodeURI(w.pdf)}" download><span>⬇️</span><span>Tải PDF</span></a>
-        <label class="ab ab-photo" style="cursor:pointer"><span>📷</span><span>Thêm ảnh</span><input type="file" accept="image/*" multiple style="display:none" onchange="handleUp(event,${w.id})"/></label>
+        <a class="ab ab-dl" href="${encodeURI(w.pdf)}" download><span>\u2b07\ufe0f</span><span>T\u1ea3i PDF</span></a>
+        <label class="ab ab-photo" style="cursor:pointer"><span>\ud83d\udcf7</span><span>Th\u00eam \u1ea3nh</span><input type="file" accept="image/*" multiple style="display:none" onchange="handleUp(event,${w.id})"/></label>
       </div>
-      <div class="pp" id="pp${w.id}">
-        <div class="ppw"><iframe src="${encodeURI(w.pdf)}" title="Bài tập Bài ${w.id}" loading="lazy"></iframe></div>
+      <div class="cp" id="cp${w.id}">
+        <div class="cpw">
+          <div class="pdf-content-body" style="padding:1.4rem 1.6rem;">
+            ${PDF_CONTENT[w.id]}
+          </div>
+        </div>
       </div>
       <div class="wcf"><span class="sbadge"><span class="sdot"></span>Hoàn thành</span></div>
     `;
     g.appendChild(c);
-    c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(1000px) rotateY(${x*9}deg) rotateX(${-y*7}deg) translateZ(8px)`});
-    c.addEventListener('mouseleave',()=>{c.style.transform='perspective(1000px) rotateY(0) rotateX(0) translateZ(0)'});
+
   });
 }
 
-/* PDF TOGGLE */
-function togglePDF(id){
-  const pp=document.getElementById('pp'+id),vb=document.getElementById('vb'+id);
-  if(!pp||!vb)return;
-  const open=pp.classList.contains('open');
-  document.querySelectorAll('.pp.open').forEach(p=>p.classList.remove('open'));
-  document.querySelectorAll('.ab-view.popen').forEach(b=>{b.classList.remove('popen');b.querySelector('span:last-child').textContent='Xem bài tập'});
+/* CONTENT TOGGLE */
+function toggleContent(id){
+  const cp=document.getElementById('cp'+id),vb=document.getElementById('vb'+id);
+  if(!cp||!vb)return;
+  const open=cp.classList.contains('open');
+  document.querySelectorAll('.cp.open').forEach(p=>p.classList.remove('open'));
+  document.querySelectorAll('.ab-view.popen').forEach(b=>{b.classList.remove('popen');b.querySelector('span:last-child').textContent='Xem n\u1ed9i dung b\u00e0i'});
   if(!open){
-    pp.classList.add('open');vb.classList.add('popen');
-    vb.querySelector('span:last-child').textContent='Đóng bài tập';
-    setTimeout(()=>pp.scrollIntoView({behavior:'smooth',block:'nearest'}),120);
+    cp.classList.add('open');vb.classList.add('popen');
+    vb.querySelector('span:last-child').textContent='\u0110\u00f3ng n\u1ed9i dung';
+    setTimeout(()=>cp.scrollIntoView({behavior:'smooth',block:'nearest'}),120);
   }
+}
+
+/* TAB SWITCH */
+function switchTab(wid,tab){
+  [1,2,3].forEach(i=>{
+    document.getElementById(`ct${wid}-${i}`).classList.toggle('act',i===tab);
+    document.getElementById(`cp${wid}-${i}`).classList.toggle('act',i===tab);
+  });
 }
 
 /* RENDER TIMELINE */
@@ -608,7 +698,1341 @@ function initRV(){
   document.querySelectorAll('.rv,.rvl,.rvr').forEach(el=>obs.observe(el));
 }
 
+const PDF_CONTENT = {
+  1: `<h2 class="pdf-h2">BÀI TẬP 1: THAO TÁC VỚI TỆP TIN VÀ THƯ MỤC</h2>
+<h3 class="pdf-h3">Thực hiện:</h3>
+<div class="pdf-item"><span class="pdf-num">1</span><div class="pdf-item-body">Mở File Explorer: Nhấn tổ hợp phím Windows + E hoặc nhấp vào biểu tượng thư</div></div>
+<p class="pdf-p">mục màu vàng trên thanh tác vụ.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p1_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">2</span><div class="pdf-item-body">Truy cập ổ đĩa/thư mục: Ở cột bên trái, nhấp vào This PC, sau đó nhấp đúp vào</div></div>
+<p class="pdf-p">một ổ đĩa không phải ổ hệ thống (ví dụ: ổ D: hoặc E:). Nếu chỉ có ổ C:, hãy vào</p>
+<p class="pdf-p">thư mục Documents.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p1_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">3</span><div class="pdf-item-body">Tạo thư mục mới: Nhấp chuột phải vào một khoảng trống -&gt; chọn New -&gt;</div></div>
+<p class="pdf-p">Folder. Đặt tên thư mục là ThucHanh_hotensinhvien (ví dụ:</p>
+<p class="pdf-p">ThucHanh_NguyenVanA). Nhấn Enter.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p2_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p2_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">4</span><div class="pdf-item-body">Vào thư mục vừa tạo: Nhấp đúp vào thư mục ThucHanh_NguyenVanA.</div></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p3_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">5</span><div class="pdf-item-body">Tạo tệp tin văn bản: Nhấp chuột phải vào khoảng trống -&gt; New -&gt; Text</div></div>
+<p class="pdf-p">Document. Đặt tên là GhiChu.txt. Nhấn Enter.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p3_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p4_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">6</span><div class="pdf-item-body">Đổi tên tệp tin: Nhấp chuột phải vào tệp GhiChu.txt -&gt; chọn Rename. Đổi tên</div></div>
+<p class="pdf-p">thành GhiChuQuanTrong.txt. Nhấn Enter.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p4_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p5_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">7</span><div class="pdf-item-body">Tạo thư mục con: Trong thư mục ThucHanh_NguyenVanA, nhấp chuột phải -&gt;</div></div>
+<p class="pdf-p">New -&gt; Folder. Đặt tên là TaiLieu.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p5_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p6_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">8</span><div class="pdf-item-body">Sao chép tệp tin (Copy &amp; Paste):</div></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Nhấp chuột phải vào tệp GhiChuQuanTrong.txt -&gt; chọn Copy (hoặc chọn</span></div>
+<p class="pdf-p">tệp rồi nhấn Ctrl + C).</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p6_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Nhấp đúp vào thư mục TaiLieu, nhấp chuột phải vào khoảng trống bên</span></div>
+<p class="pdf-p">trong -&gt; chọn Paste (hoặc nhấn Ctrl + V). Bây giờ bạn có một bản sao của</p>
+<p class="pdf-p">tệp trong thư mục TaiLieu.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p7_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p7_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p8_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">9</span><div class="pdf-item-body">Di chuyển tệp tin (Cut &amp; Paste):</div></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Quay lại thư mục ThucHanh_NguyenVanA. Tạo một tệp mới tên là</span></div>
+<p class="pdf-p">DiChuyen.txt.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p8_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Nhấp chuột phải vào tệp DiChuyen.txt -&gt; chọn Cut (hoặc chọn tệp rồi nhấn</span></div>
+<p class="pdf-p">Ctrl + X).</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p9_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Nhấp đúp vào thư mục TaiLieu, nhấp chuột phải vào khoảng trống -&gt; chọn</span></div>
+<p class="pdf-p">Paste (hoặc nhấn Ctrl + V). Tệp gốc đã biến mất khỏi vị trí cũ và chỉ còn ở</p>
+<p class="pdf-p">vị trí mới.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p9_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p10_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p10_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">10</span><div class="pdf-item-body">Xóa tệp tin: Trong thư mục TaiLieu, nhấp chuột phải vào tệp</div></div>
+<p class="pdf-p">GhiChuQuanTrong.txt -&gt; chọn Delete. Tệp sẽ được chuyển vào Thùng rác</p>
+<p class="pdf-p">(Recycle Bin).</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p11_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">11</span><div class="pdf-item-body">Xóa vĩnh viễn: Chọn tệp DiChuyen.txt, nhấn giữ phím Shift và nhấn phím Delete.</div></div>
+<p class="pdf-p">Một cảnh báo sẽ hiện ra. Nếu đồng ý, tệp sẽ bị xóa vĩnh viễn mà không qua Thùng</p>
+<p class="pdf-p">rác.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p11_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">12</span><div class="pdf-item-body">Khôi phục từ Thùng rác (Tùy chọn): Tìm biểu tượng Recycle Bin trên màn hình</div></div>
+<p class="pdf-p">nền, nhấp đúp để mở. Tìm tệp GhiChuQuanTrong.txt đã xóa, nhấp chuột phải vào</p>
+<p class="pdf-p">nó và chọn Restore. Tệp sẽ quay trở lại vị trí ban đầu.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p12_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai1_p12_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>`,
+  2: `<h2 class="pdf-h2">BÁO CÁO TÌM KIẾM VÀ ĐÁNH GIÁ NGUỒN THÔNG TIN</h2>
+<h3 class="pdf-h3">I.</h3>
+<h3 class="pdf-h3">Giới thiệu</h3>
+<h3 class="pdf-h3">Trong bối cảnh chuyển đổi số đang diễn ra mạnh mẽ, trí tuệ nhân tạo (AI)</h3>
+<h3 class="pdf-h3">dần trở thành một yếu tố cốt lõi làm thay đổi cách thức con người tiếp cận</h3>
+<h3 class="pdf-h3">tri thức, đặc biệt trong môi trường giáo dục đại học. Đối với lĩnh vực giảng</h3>
+<h3 class="pdf-h3">dạy và học tập tiếng Anh, AI không chỉ hỗ trợ cá nhân hóa quá trình học</h3>
+<h3 class="pdf-h3">mà còn góp phần nâng cao hiệu quả giảng dạy thông qua các công cụ thông</h3>
+<h3 class="pdf-h3">minh như chatbot, hệ thống chấm điểm tự động hay nền tảng học tập thích</h3>
+<h3 class="pdf-h3">ứng. Tuy nhiên, cùng với sự phát triển nhanh chóng của AI là sự gia tăng</h3>
+<h3 class="pdf-h3">về số lượng nguồn thông tin với mức độ tin cậy không đồng đều, đòi hỏi</h3>
+<h3 class="pdf-h3">người học phải có khả năng tìm kiếm, đánh giá và sử dụng thông tin một</h3>
+<h3 class="pdf-h3">cách có chọn lọc và có trách nhiệm. Vì vậy, báo cáo này tập trung vào việc</h3>
+<h3 class="pdf-h3">xây dựng một quy trình tìm kiếm thông tin học thuật có hệ thống, đồng thời</h3>
+<h3 class="pdf-h3">đánh giá độ tin cậy của các nguồn tài liệu liên quan đến ứng dụng AI trong</h3>
+<h3 class="pdf-h3">dạy và học tiếng Anh ở bậc đại học.</h3>
+<h3 class="pdf-h3">II.</h3>
+<h3 class="pdf-h3">Phạm vi và phương pháp tìm kiếm</h3>
+<h3 class="pdf-h3">Phạm vi nghiên cứu của báo cáo được giới hạn trong việc phân tích các tài</h3>
+<h3 class="pdf-h3">liệu liên quan đến ứng dụng AI trong giảng dạy và học tập tiếng Anh dành</h3>
+<h3 class="pdf-h3">cho sinh viên đại học, với ưu tiên các nguồn được công bố trong giai đoạn</h3>
+<h3 class="pdf-h3">từ năm 2018 đến năm 2024 nhằm đảm bảo tính cập nhật. Quá trình tìm</h3>
+<h3 class="pdf-h3">kiếm được thực hiện thông qua việc sử dụng các từ khóa chuyên môn như</h3>
+<h3 class="pdf-h3">“Artificial Intelligence in English Language Teaching”, “AI-assisted</h3>
+<h3 class="pdf-h3">language learning”, “Chatbots in ESL education” và “AI in higher</h3>
+<h3 class="pdf-h3">education learning outcomes”. Các nguồn thông tin được thu thập từ nhiều</h3>
+<h3 class="pdf-h3">kênh khác nhau, bao gồm cơ sở dữ liệu học thuật như Google Scholar, các</h3>
+<h3 class="pdf-h3">tạp chí khoa học uy tín trong lĩnh vực giáo dục và ngôn ngữ, sách chuyên</h3>
+<h3 class="pdf-h3">khảo của các học giả, cũng như các báo cáo và tài liệu từ các tổ chức quốc</h3>
+<h3 class="pdf-h3">tế và nguồn mở trên internet. Cách tiếp cận đa nguồn này nhằm đảm bảo</h3>
+<h3 class="pdf-h3">tính toàn diện và khách quan trong quá trình nghiên cứu.</h3>
+<h3 class="pdf-h3">III.</h3>
+<h3 class="pdf-h3">Danh mục tài liệu tham khảo</h3>
+<div class="pdf-item"><span class="pdf-num">1</span><div class="pdf-item-body">British Council (2022) Artificial Intelligence in English Language Teaching.</div></div>
+<div class="pdf-item"><span class="pdf-num">2</span><div class="pdf-item-body">Chen, X. et al. (2022) ‘AI-assisted language learning’, Educational</div></div>
+<h3 class="pdf-h3">Technology Research and Development, 70(2), pp. 567–589.</h3>
+<div class="pdf-item"><span class="pdf-num">3</span><div class="pdf-item-body">Godwin-Jones, R. (2018) ‘Using AI in language learning’, Language Learning</div></div>
+<h3 class="pdf-h3">&amp; Technology, 22(3), pp. 10–24.</h3>
+<div class="pdf-item"><span class="pdf-num">4</span><div class="pdf-item-body">Holmes, W., Bialik, M. &amp; Fadel, C. (2019) Artificial Intelligence in Education.</div></div>
+<h3 class="pdf-h3">Boston: Center for Curriculum Redesign.</h3>
+<div class="pdf-item"><span class="pdf-num">5</span><div class="pdf-item-body">Luckin, R. et al. (2016) Intelligence Unleashed: An argument for AI in</div></div>
+<h3 class="pdf-h3">Education. London: Pearson.</h3>
+<div class="pdf-item"><span class="pdf-num">6</span><div class="pdf-item-body">OECD (2021) Digital Education Outlook. Paris.</div></div>
+<div class="pdf-item"><span class="pdf-num">7</span><div class="pdf-item-body">OpenAI (2023) ‘AI tools in education’.</div></div>
+<div class="pdf-item"><span class="pdf-num">8</span><div class="pdf-item-body">UNESCO (2021) AI and Education: Guidance for Policy-makers. Paris.</div></div>
+<div class="pdf-item"><span class="pdf-num">9</span><div class="pdf-item-body">Wang, Y. (2021) ‘Artificial intelligence in English language teaching’,</div></div>
+<h3 class="pdf-h3">Computers &amp; Education, 168, pp. 1–14.</h3>
+<div class="pdf-item"><span class="pdf-num">10</span><div class="pdf-item-body">Xu, X. and Li, Y. (2020) ‘AI and language learning’, Language Learning &amp;</div></div>
+<h3 class="pdf-h3">Technology, 24(3), pp. 20–35.</h3>
+<div class="pdf-item"><span class="pdf-num">11</span><div class="pdf-item-body">Zhang, Z. (2023) ‘Chatbots in ESL learning’, Journal of Educational</div></div>
+<h3 class="pdf-h3">Computing Research, 61(4), pp. 890–910.</h3>
+<h3 class="pdf-h3">IV.</h3>
+<h3 class="pdf-h3">Đánh giá độ tin cậy của nguồn thông tin</h3>
+<h3 class="pdf-h3">Để đảm bảo tính khách quan và nhất quán, các nguồn tài liệu được đánh</h3>
+<h3 class="pdf-h3">giá dựa trên năm tiêu chí chính bao gồm: uy tín của tác giả, độ tin cậy của</h3>
+<h3 class="pdf-h3">cơ quan xuất bản, phương pháp nghiên cứu, mức độ trích dẫn trong học</h3>
+<h3 class="pdf-h3">thuật và tính cập nhật của nội dung. Việc áp dụng đồng thời các tiêu chí</h3>
+<h3 class="pdf-h3">này giúp hạn chế thiên lệch và cung cấp cái nhìn toàn diện về giá trị của</h3>
+<h3 class="pdf-h3">từng nguồn.</h3>
+<h3 class="pdf-h3">Đối với tài liệu của British Council (2022), đây là một tổ chức giáo dục</h3>
+<h3 class="pdf-h3">quốc tế có uy tín cao trong lĩnh vực giảng dạy tiếng Anh, do đó tiêu chí về</h3>
+<h3 class="pdf-h3">tác giả và cơ quan xuất bản được đánh giá tích cực. Tuy nhiên, tài liệu này</h3>
+<h3 class="pdf-h3">chủ yếu mang tính hướng dẫn thực tiễn, không sử dụng phương pháp</h3>
+<h3 class="pdf-h3">nghiên cứu học thuật cụ thể và thiếu dữ liệu thực nghiệm. Mức độ trích dẫn</h3>
+<h3 class="pdf-h3">trong các công trình nghiên cứu cũng không cao. Ưu điểm của nguồn này</h3>
+<h3 class="pdf-h3">là tính ứng dụng và cập nhật, nhưng hạn chế nằm ở chiều sâu học thuật và</h3>
+<h3 class="pdf-h3">khả năng kiểm chứng.</h3>
+<h3 class="pdf-h3">Nghiên cứu của Chen et al. (2022) đáp ứng đầy đủ các tiêu chí của một</h3>
+<h3 class="pdf-h3">nguồn học thuật chất lượng cao. Các tác giả là những nhà nghiên cứu</h3>
+<h3 class="pdf-h3">chuyên ngành, bài báo được xuất bản bởi Springer – một nhà xuất bản học</h3>
+<h3 class="pdf-h3">thuật uy tín. Phương pháp nghiên cứu được trình bày rõ ràng với thiết kế</h3>
+<h3 class="pdf-h3">thực nghiệm, dữ liệu được phân tích và kiểm định chặt chẽ. Bài viết có mức</h3>
+<h3 class="pdf-h3">độ trích dẫn cao và được công bố gần đây, đảm bảo tính cập nhật. Tuy nhiên,</h3>
+<h3 class="pdf-h3">giống nhiều nghiên cứu thực nghiệm khác, phạm vi mẫu nghiên cứu có thể</h3>
+<h3 class="pdf-h3">còn hạn chế, ảnh hưởng đến khả năng khái quát hóa.</h3>
+<h3 class="pdf-h3">Bài viết của Godwin-Jones (2018) có độ tin cậy khá cao nhờ tác giả là</h3>
+<h3 class="pdf-h3">chuyên gia trong lĩnh vực công nghệ ngôn ngữ và được đăng trên tạp chí</h3>
+<h3 class="pdf-h3">học thuật uy tín. Tuy nhiên, phương pháp chủ yếu là tổng hợp và phân tích</h3>
+<h3 class="pdf-h3">các nghiên cứu trước đó, không có dữ liệu thực nghiệm mới. Mức độ trích</h3>
+<h3 class="pdf-h3">dẫn ở mức trung bình và nội dung có phần lạc hậu so với sự phát triển</h3>
+<h3 class="pdf-h3">nhanh chóng của AI. Ưu điểm là cung cấp cái nhìn tổng quan tốt, nhưng</h3>
+<h3 class="pdf-h3">hạn chế ở tính cập nhật và bằng chứng thực nghiệm.</h3>
+<h3 class="pdf-h3">Tài liệu của Holmes et al. (2019) được đánh giá rất cao về uy tín học thuật</h3>
+<h3 class="pdf-h3">do được viết bởi các chuyên gia hàng đầu và xuất bản bởi một tổ chức</h3>
+<h3 class="pdf-h3">nghiên cứu giáo dục. Nội dung mang tính hệ thống, giúp xây dựng nền tảng</h3>
+<h3 class="pdf-h3">lý thuyết vững chắc về AI trong giáo dục. Tuy nhiên, tài liệu này thiên về</h3>
+<h3 class="pdf-h3">phân tích và định hướng, chưa đi sâu vào nghiên cứu thực nghiệm cụ thể.</h3>
+<h3 class="pdf-h3">Ngoài ra, do được xuất bản năm 2019, một số nội dung có thể chưa phản</h3>
+<h3 class="pdf-h3">ánh những tiến bộ mới nhất của công nghệ AI.</h3>
+<h3 class="pdf-h3">Công trình của Luckin et al. (2016) có giá trị học thuật cao và được trích</h3>
+<h3 class="pdf-h3">dẫn rộng rãi, cho thấy ảnh hưởng lớn trong lĩnh vực nghiên cứu AI trong</h3>
+<h3 class="pdf-h3">giáo dục. Tác giả và nhà xuất bản đều có uy tín. Tuy nhiên, hạn chế lớn</h3>
+<h3 class="pdf-h3">nhất là tính cập nhật thấp do tài liệu được công bố từ khá sớm, khi công</h3>
+<h3 class="pdf-h3">nghệ AI chưa phát triển mạnh như hiện nay. Nội dung mang tính lý thuyết</h3>
+<h3 class="pdf-h3">nhiều hơn thực nghiệm, do đó cần được bổ sung bằng các nghiên cứu mới.</h3>
+<h3 class="pdf-h3">Báo cáo của OECD (2021) có độ tin cậy rất cao nhờ uy tín của tổ chức và</h3>
+<h3 class="pdf-h3">quy trình thu thập, phân tích dữ liệu trên quy mô lớn. Phương pháp nghiên</h3>
+<h3 class="pdf-h3">cứu mang tính hệ thống và dựa trên số liệu thực tế, đồng thời tài liệu được</h3>
+<h3 class="pdf-h3">trích dẫn rộng rãi trong các nghiên cứu và chính sách giáo dục. Tuy nhiên,</h3>
+<h3 class="pdf-h3">nội dung thiên về phân tích vĩ mô và xu hướng toàn cầu, do đó có thể thiếu</h3>
+<h3 class="pdf-h3">tính cụ thể trong bối cảnh lớp học hoặc người học cá nhân.</h3>
+<h3 class="pdf-h3">Nguồn từ OpenAI (2023) có ưu điểm nổi bật về tính cập nhật và chuyên</h3>
+<h3 class="pdf-h3">môn công nghệ, do được cung cấp trực tiếp từ tổ chức phát triển AI. Tuy</h3>
+<h3 class="pdf-h3">nhiên, đây không phải là nguồn học thuật, không có phương pháp nghiên</h3>
+<h3 class="pdf-h3">cứu rõ ràng và có thể mang tính quảng bá sản phẩm. Mức độ trích dẫn trong</h3>
+<h3 class="pdf-h3">học thuật còn hạn chế. Vì vậy, nguồn này chỉ nên được sử dụng như tài liệu</h3>
+<h3 class="pdf-h3">tham khảo bổ trợ, không nên là nguồn chính.</h3>
+<h3 class="pdf-h3">Tài liệu của UNESCO (2021) có độ tin cậy rất cao nhờ uy tín toàn cầu của</h3>
+<h3 class="pdf-h3">tổ chức và quy trình kiểm duyệt nghiêm ngặt. Nội dung dựa trên tổng hợp</h3>
+<h3 class="pdf-h3">nhiều nghiên cứu và dữ liệu thực tiễn, đồng thời có mức độ trích dẫn cao.</h3>
+<h3 class="pdf-h3">Tuy nhiên, tương tự OECD, tài liệu này tập trung vào định hướng chính</h3>
+<h3 class="pdf-h3">sách và chiến lược hơn là nghiên cứu thực nghiệm cụ thể.</h3>
+<h3 class="pdf-h3">Nghiên cứu của Wang (2021) được đánh giá rất cao do được công bố trên</h3>
+<h3 class="pdf-h3">tạp chí khoa học uy tín, sử dụng phương pháp thực nghiệm rõ ràng và có</h3>
+<h3 class="pdf-h3">dữ liệu kiểm chứng. Tác giả có chuyên môn phù hợp và bài viết có mức độ</h3>
+<h3 class="pdf-h3">trích dẫn cao. Nội dung cũng tương đối cập nhật, phản ánh đúng xu hướng</h3>
+<h3 class="pdf-h3">ứng dụng AI trong giảng dạy tiếng Anh. Hạn chế duy nhất có thể là phạm</h3>
+<h3 class="pdf-h3">vi nghiên cứu chưa đủ rộng.</h3>
+<h3 class="pdf-h3">Bài viết của Xu and Li (2020) có độ tin cậy cao nhờ được đăng trên tạp chí</h3>
+<h3 class="pdf-h3">học thuật và có nền tảng lý thuyết vững chắc. Tuy nhiên, phương pháp chủ</h3>
+<h3 class="pdf-h3">yếu là tổng hợp và phân tích tài liệu, thiếu dữ liệu thực nghiệm mới. Mức</h3>
+<h3 class="pdf-h3">độ trích dẫn khá tốt và nội dung tương đối cập nhật, nhưng chưa phản ánh</h3>
+<h3 class="pdf-h3">các công nghệ AI mới nhất.</h3>
+<h3 class="pdf-h3">Cuối cùng, nghiên cứu của Zhang (2023) là một trong những nguồn có giá</h3>
+<h3 class="pdf-h3">trị cao nhất trong danh sách do tính cập nhật và tính thực nghiệm rõ ràng.</h3>
+<h3 class="pdf-h3">Bài báo được công bố trên tạp chí uy tín, có phương pháp nghiên cứu chặt</h3>
+<h3 class="pdf-h3">chẽ và tập trung vào chatbot – một xu hướng quan trọng trong học ngôn</h3>
+<h3 class="pdf-h3">ngữ hiện nay. Mặc dù số lượng trích dẫn chưa quá cao do mới công bố,</h3>
+<h3 class="pdf-h3">nhưng tiềm năng học thuật của nghiên cứu là rất lớn.</h3>
+<h3 class="pdf-h3">V.</h3>
+<h3 class="pdf-h3">Bảng tổng hợp đánh giá và xếp hạng độ tin cậy</h3>
+<h3 class="pdf-h3">STT</h3>
+<h3 class="pdf-h3">Nguồn</h3>
+<h3 class="pdf-h3">Tác</h3>
+<h3 class="pdf-h3">giả</h3>
+<h3 class="pdf-h3">Cơ</h3>
+<h3 class="pdf-h3">quan</h3>
+<h3 class="pdf-h3">Phương</h3>
+<h3 class="pdf-h3">pháp</h3>
+<h3 class="pdf-h3">Trích</h3>
+<h3 class="pdf-h3">dẫn</h3>
+<h3 class="pdf-h3">Cập</h3>
+<h3 class="pdf-h3">nhật</h3>
+<h3 class="pdf-h3">Tổng</h3>
+<h3 class="pdf-h3">Xếp</h3>
+<h3 class="pdf-h3">hạng</h3>
+<h3 class="pdf-h3">1</h3>
+<h3 class="pdf-h3">Chen et</h3>
+<h3 class="pdf-h3">al. (2022)</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">25</h3>
+<h3 class="pdf-h3">Rất</h3>
+<h3 class="pdf-h3">cao</h3>
+<h3 class="pdf-h3">2</h3>
+<h3 class="pdf-h3">Wang</h3>
+<h3 class="pdf-h3">(2021)</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">25</h3>
+<h3 class="pdf-h3">Rất</h3>
+<h3 class="pdf-h3">cao</h3>
+<h3 class="pdf-h3">3</h3>
+<h3 class="pdf-h3">OECD</h3>
+<h3 class="pdf-h3">(2021)</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">4</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">24</h3>
+<h3 class="pdf-h3">Rất</h3>
+<h3 class="pdf-h3">cao</h3>
+<h3 class="pdf-h3">4</h3>
+<h2 class="pdf-h2">UNESCO</h2>
+<h3 class="pdf-h3">(2021)</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">4</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">24</h3>
+<h3 class="pdf-h3">Rất</h3>
+<h3 class="pdf-h3">cao</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">Zhang</h3>
+<h3 class="pdf-h3">(2023)</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">4</h3>
+<h3 class="pdf-h3">24</h3>
+<h3 class="pdf-h3">Rất</h3>
+<h3 class="pdf-h3">cao</h3>
+<h3 class="pdf-h3">6</h3>
+<h3 class="pdf-h3">Holmes</h3>
+<h3 class="pdf-h3">et al.</h3>
+<h3 class="pdf-h3">(2019)</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">3</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">4</h3>
+<h3 class="pdf-h3">22</h3>
+<h3 class="pdf-h3">Rất</h3>
+<h3 class="pdf-h3">cao</h3>
+<h3 class="pdf-h3">7</h3>
+<h3 class="pdf-h3">Luckin et</h3>
+<h3 class="pdf-h3">al. (2016)</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">3</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">2</h3>
+<h3 class="pdf-h3">20</h3>
+<h3 class="pdf-h3">Cao</h3>
+<h3 class="pdf-h3">8</h3>
+<h3 class="pdf-h3">Xu &amp; Li</h3>
+<h3 class="pdf-h3">(2020)</h3>
+<h3 class="pdf-h3">4</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">3</h3>
+<h3 class="pdf-h3">4</h3>
+<h3 class="pdf-h3">4</h3>
+<h3 class="pdf-h3">20</h3>
+<h3 class="pdf-h3">Cao</h3>
+<h3 class="pdf-h3">9</h3>
+<h3 class="pdf-h3">British</h3>
+<h3 class="pdf-h3">Council</h3>
+<h3 class="pdf-h3">(2022)</h3>
+<h3 class="pdf-h3">4</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">2</h3>
+<h3 class="pdf-h3">2</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">18</h3>
+<h3 class="pdf-h3">Cao</h3>
+<h3 class="pdf-h3">10</h3>
+<h3 class="pdf-h3">Godwin-</h3>
+<h3 class="pdf-h3">Jones</h3>
+<h3 class="pdf-h3">(2018)</h3>
+<h3 class="pdf-h3">4</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">3</h3>
+<h3 class="pdf-h3">3</h3>
+<h3 class="pdf-h3">3</h3>
+<h3 class="pdf-h3">18</h3>
+<h3 class="pdf-h3">Cao</h3>
+<h3 class="pdf-h3">11</h3>
+<h3 class="pdf-h3">OpenAI</h3>
+<h3 class="pdf-h3">(2023)</h3>
+<h3 class="pdf-h3">4</h3>
+<h3 class="pdf-h3">4</h3>
+<h3 class="pdf-h3">2</h3>
+<h3 class="pdf-h3">2</h3>
+<h3 class="pdf-h3">5</h3>
+<h3 class="pdf-h3">17</h3>
+<h3 class="pdf-h3">Khá</h3>
+<h3 class="pdf-h3">Các tiêu chí trong bảng được chấm theo thang điểm từ 1 đến 5, trong đó 1 thể hiện</h3>
+<h3 class="pdf-h3">mức độ rất thấp và 5 thể hiện mức độ rất cao. Tiêu chí “tác giả” đánh giá uy tín và</h3>
+<h3 class="pdf-h3">chuyên môn của người viết; “cơ quan xuất bản” phản ánh độ tin cậy của nơi công bố;</h3>
+<h3 class="pdf-h3">“phương pháp nghiên cứu” xem xét mức độ rõ ràng và tính khoa học của phương</h3>
+<h3 class="pdf-h3">pháp; “trích dẫn” thể hiện mức độ ảnh hưởng trong học thuật; và “cập nhật” đánh giá</h3>
+<h3 class="pdf-h3">tính mới của tài liệu. Tổng điểm được sử dụng để phân loại mức độ tin cậy của từng</h3>
+<h3 class="pdf-h3">nguồn. Mức xếp hạng được phân loại như sau: từ 22–25 điểm là “rất cao”, 18–21</h3>
+<h3 class="pdf-h3">điểm là “cao”, 15–17 điểm là “khá”, và dưới 15 điểm là “trung bình”.</h3>
+<h3 class="pdf-h3">Bảng tổng hợp cho thấy các nguồn có độ tin cậy cao nhất chủ yếu là các bài báo khoa</h3>
+<h3 class="pdf-h3">học được công bố trên các tạp chí uy tín, với phương pháp nghiên cứu thực nghiệm</h3>
+<h3 class="pdf-h3">rõ ràng và dữ liệu được kiểm chứng. Trong khi đó, các nguồn từ tổ chức quốc tế như</h3>
+<h3 class="pdf-h3">OECD và UNESCO cũng đạt mức độ tin cậy cao nhờ uy tín và quy mô dữ liệu lớn,</h3>
+<h3 class="pdf-h3">mặc dù thiên về phân tích vĩ mô. Ngược lại, các nguồn có điểm thấp hơn thường</h3>
+<h3 class="pdf-h3">thiếu phương pháp nghiên cứu cụ thể hoặc mang tính tổng hợp và định hướng, chẳng</h3>
+<h3 class="pdf-h3">hạn như tài liệu từ British Council hoặc OpenAI. Điều này cho thấy việc kết hợp</h3>
+<h3 class="pdf-h3">nhiều loại nguồn là cần thiết để vừa đảm bảo độ tin cậy học thuật vừa cập nhật xu</h3>
+<h3 class="pdf-h3">hướng thực tiễn.</h3>
+<h3 class="pdf-h3">VI.</h3>
+<h3 class="pdf-h3">Kết luận</h3>
+<h3 class="pdf-h3">Quá trình tìm kiếm và đánh giá thông tin trong lĩnh vực AI và giáo dục cho</h3>
+<h3 class="pdf-h3">thấy tầm quan trọng của việc sử dụng nguồn tài liệu một cách có chọn lọc</h3>
+<h3 class="pdf-h3">và có hệ thống. Mỗi loại nguồn đều có giá trị riêng, nhưng cũng tồn tại</h3>
+<h3 class="pdf-h3">những hạn chế nhất định, đòi hỏi người học phải có khả năng phân tích và</h3>
+<h3 class="pdf-h3">so sánh để đưa ra đánh giá chính xác. Trong bối cảnh AI ngày càng phát</h3>
+<h3 class="pdf-h3">triển, việc làm chủ các kỹ năng tìm kiếm, đánh giá và sử dụng thông tin</h3>
+<h3 class="pdf-h3">không chỉ giúp nâng cao hiệu quả học tập mà còn góp phần hình thành tư</h3>
+<h3 class="pdf-h3">duy phản biện và năng lực tự học – những yếu tố then chốt trong môi trường</h3>
+<h3 class="pdf-h3">giáo dục hiện đại.</h3>`,
+  3: `<h2 class="pdf-h2">BÁO CÁO THỬ NGHIỆM PROMPT ENGINEERING TRONG HỖ TRỢ</h2>
+<h2 class="pdf-h2">HỌC TẬP BẰNG AI</h2>
+<h3 class="pdf-h3">I.</h3>
+<h3 class="pdf-h3">Giới thiệu</h3>
+<h3 class="pdf-h3">Sự phát triển mạnh mẽ của các mô hình ngôn ngữ lớn như ChatGPT đã tạo</h3>
+<h3 class="pdf-h3">ra nhiều thay đổi trong cách con người học tập, tìm kiếm thông tin và xử</h3>
+<h3 class="pdf-h3">lý tri thức. Thay vì chỉ đóng vai trò là công cụ tra cứu, AI hiện nay có thể</h3>
+<h3 class="pdf-h3">hỗ trợ người học tóm tắt tài liệu, giải thích kiến thức phức tạp, xây dựng</h3>
+<h3 class="pdf-h3">câu hỏi ôn tập và cá nhân hóa quá trình học tập. Tuy nhiên, chất lượng</h3>
+<h3 class="pdf-h3">phản hồi của AI phụ thuộc rất lớn vào cách người dùng đặt prompt. Một</h3>
+<h3 class="pdf-h3">prompt thiếu rõ ràng thường tạo ra phản hồi chung chung, trong khi một</h3>
+<h3 class="pdf-h3">prompt được thiết kế tốt có thể giúp AI đưa ra câu trả lời chính xác, logic</h3>
+<h3 class="pdf-h3">và phù hợp hơn với mục tiêu học tập.</h3>
+<h3 class="pdf-h3">Báo cáo này tập trung khảo sát ảnh hưởng của prompt engineering đối với</h3>
+<h3 class="pdf-h3">hiệu quả phản hồi của AI thông qua ba tác vụ học tập phổ biến gồm tóm</h3>
+<h3 class="pdf-h3">tắt tài liệu học thuật, giải thích khái niệm phức tạp và tạo bộ câu hỏi ôn tập.</h3>
+<h3 class="pdf-h3">Với mỗi tác vụ, ba phiên bản prompt ở các mức độ khác nhau đã được xây</h3>
+<h3 class="pdf-h3">dựng và thử nghiệm trên ChatGPT nhằm phân tích mối liên hệ giữa cấu</h3>
+<h3 class="pdf-h3">trúc prompt và chất lượng đầu ra của AI.</h3>
+<h3 class="pdf-h3">II.</h3>
+<h3 class="pdf-h3">Tác vụ 1: Tóm tắt tài liệu học thuật</h3>
+<h3 class="pdf-h3">Tóm tắt tài liệu học thuật là một hoạt động phổ biến đối với sinh viên trong</h3>
+<h3 class="pdf-h3">quá trình đọc bài nghiên cứu hoặc chuẩn bị bài học. Mục tiêu của tác vụ</h3>
+<h3 class="pdf-h3">này là giúp người học nhanh chóng nắm được nội dung cốt lõi của văn bản</h3>
+<h3 class="pdf-h3">mà không cần đọc toàn bộ tài liệu nhiều lần. Tuy nhiên, đây cũng là tác vụ</h3>
+<h3 class="pdf-h3">có nhiều thách thức vì AI dễ bỏ sót luận điểm quan trọng hoặc tạo ra bản</h3>
+<h3 class="pdf-h3">tóm tắt quá dài, thiếu trọng tâm.</h3>
+<div class="pdf-item"><span class="pdf-num">1</span><div class="pdf-item-body">Prompt cơ bản: Hãy tóm tắt bài viết này.</div></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p2_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p2_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p3_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">2</span><div class="pdf-item-body">Prompt cải tiến: Hãy tóm tắt bài viết sau trong khoảng 200 từ.</div></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Tập trung vào luận điểm chính, phương pháp nghiên cứu, kết quả và kết luận</span></div>
+<h3 class="pdf-h3">của tác giả.</h3>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Sử dụng ngôn ngữ dễ hiểu cho sinh viên năm nhất.</span></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p4_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p4_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">3</span><div class="pdf-item-body">Prompt nâng cao: Bạn là một trợ giảng đại học chuyên hỗ trợ sinh viên đọc</div></div>
+<h3 class="pdf-h3">tài liệu học thuật. Nhiệm vụ của bạn:</h3>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Xác định chủ đề nghiên cứu</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Tóm tắt phương pháp nghiên cứu</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Trình bày kết quả chính</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Giải thích ý nghĩa của nghiên cứu. Sau đó:</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Viết một bản tóm tắt học thuật từ 150–200 từ</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Viết một bản tóm tắt ngắn trong 3 câu</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Liệt kê 5 từ khóa quan trọng</span></div>
+<h3 class="pdf-h3">Hãy trình bày rõ ràng, logic và dễ đọc.</h3>
+<h3 class="pdf-h3">Bài viết:</h3>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p5_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p5_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p6_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p6_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<h3 class="pdf-h3">Sau khi thử nghiệm, prompt cơ bản tạo ra phản hồi khá chung chung. AI có</h3>
+<h3 class="pdf-h3">xu hướng viết lại nội dung bài đọc theo cách rút gọn nhưng không xác định rõ</h3>
+<h3 class="pdf-h3">đâu là thông tin trọng tâm. Một số kết quả còn quá dài hoặc thiếu các ý liên</h3>
+<h3 class="pdf-h3">quan đến phương pháp nghiên cứu và kết luận.</h3>
+<h3 class="pdf-h3">Prompt cải tiến cho kết quả tốt hơn rõ rệt vì đã xác định độ dài, đối tượng</h3>
+<h3 class="pdf-h3">người đọc và nội dung cần tập trung. AI bắt đầu ưu tiên các ý quan trọng và</h3>
+<h3 class="pdf-h3">sử dụng cách diễn đạt phù hợp hơn với sinh viên năm nhất. Tuy nhiên, cấu</h3>
+<h3 class="pdf-h3">trúc phản hồi vẫn chưa thật sự rõ ràng.</h3>
+<h3 class="pdf-h3">Prompt nâng cao tạo ra kết quả có tính học thuật và logic nhất. Việc sử dụng</h3>
+<h3 class="pdf-h3">role prompting với vai trò “trợ giảng đại học” giúp AI lựa chọn giọng văn</h3>
+<h3 class="pdf-h3">mang tính hướng dẫn học tập hơn thay vì chỉ tóm tắt thông tin đơn thuần.</h3>
+<h3 class="pdf-h3">Ngoài ra, việc chia nhiệm vụ thành nhiều bước nhỏ giúp AI xử lý thông tin có</h3>
+<h3 class="pdf-h3">hệ thống hơn. Kết quả không chỉ ngắn gọn mà còn dễ ôn tập và ghi nhớ hơn.</h3>
+<h3 class="pdf-h3">Phiên</h3>
+<h3 class="pdf-h3">bản</h3>
+<h3 class="pdf-h3">prompt</h3>
+<h3 class="pdf-h3">Đặc</h3>
+<h3 class="pdf-h3">điểm</h3>
+<h3 class="pdf-h3">prompt</h3>
+<h3 class="pdf-h3">Chất</h3>
+<h3 class="pdf-h3">lượng</h3>
+<h3 class="pdf-h3">kết quả</h3>
+<h3 class="pdf-h3">Điểm mạnh</h3>
+<h3 class="pdf-h3">Hạn chế</h3>
+<h3 class="pdf-h3">Cơ bản</h3>
+<h3 class="pdf-h3">Ngắn</h3>
+<h3 class="pdf-h3">gọn,</h3>
+<h3 class="pdf-h3">không có ngữ</h3>
+<h3 class="pdf-h3">cảnh</h3>
+<h3 class="pdf-h3">AI tạo bản</h3>
+<h3 class="pdf-h3">tóm</h3>
+<h3 class="pdf-h3">tắt</h3>
+<h3 class="pdf-h3">chung</h3>
+<h3 class="pdf-h3">chung, thiếu</h3>
+<h3 class="pdf-h3">trọng tâm</h3>
+<h3 class="pdf-h3">Nhanh, dễ sử</h3>
+<h3 class="pdf-h3">dụng</h3>
+<h3 class="pdf-h3">Không kiểm</h3>
+<h3 class="pdf-h3">soát</h3>
+<h3 class="pdf-h3">được</h3>
+<h3 class="pdf-h3">nội dung và</h3>
+<h3 class="pdf-h3">độ dài</h3>
+<h3 class="pdf-h3">Cải tiến</h3>
+<h3 class="pdf-h3">Có yêu cầu về</h3>
+<h3 class="pdf-h3">độ dài, nội</h3>
+<h3 class="pdf-h3">dung và đối</h3>
+<h3 class="pdf-h3">tượng người</h3>
+<h3 class="pdf-h3">đọc</h3>
+<h3 class="pdf-h3">Bản tóm tắt</h3>
+<h3 class="pdf-h3">rõ ràng hơn,</h3>
+<h3 class="pdf-h3">tập trung vào</h3>
+<h3 class="pdf-h3">ý chính</h3>
+<h3 class="pdf-h3">Nội</h3>
+<h3 class="pdf-h3">dung</h3>
+<h3 class="pdf-h3">phù hợp hơn</h3>
+<h3 class="pdf-h3">với sinh viên</h3>
+<h3 class="pdf-h3">Cấu</h3>
+<h3 class="pdf-h3">trúc</h3>
+<h3 class="pdf-h3">phản</h3>
+<h3 class="pdf-h3">hồi</h3>
+<h3 class="pdf-h3">chưa thật sự</h3>
+<h3 class="pdf-h3">logic</h3>
+<h3 class="pdf-h3">Nâng cao</h3>
+<h3 class="pdf-h3">Áp dụng role</h3>
+<h3 class="pdf-h3">prompting và</h3>
+<h3 class="pdf-h3">chia nhiệm vụ</h3>
+<h3 class="pdf-h3">nhiều bước</h3>
+<h3 class="pdf-h3">Phản hồi có</h3>
+<h3 class="pdf-h3">tính</h3>
+<h3 class="pdf-h3">học</h3>
+<h3 class="pdf-h3">thuật, rõ ràng</h3>
+<h3 class="pdf-h3">và dễ ôn tập</h3>
+<h3 class="pdf-h3">Nội dung đầy</h3>
+<h3 class="pdf-h3">đủ,</h3>
+<h3 class="pdf-h3">có</h3>
+<h3 class="pdf-h3">tổ</h3>
+<h3 class="pdf-h3">chức,</h3>
+<h3 class="pdf-h3">phù</h3>
+<h3 class="pdf-h3">hợp mục tiêu</h3>
+<h3 class="pdf-h3">học tập</h3>
+<h3 class="pdf-h3">Prompt</h3>
+<h3 class="pdf-h3">dài</h3>
+<h3 class="pdf-h3">và mất thời</h3>
+<h3 class="pdf-h3">gian thiết kế</h3>
+<h3 class="pdf-h3">hơn</h3>
+<h3 class="pdf-h3">III.</h3>
+<h3 class="pdf-h3">Tác vụ 2: Giải thích một khái niệm phức tạp</h3>
+<h3 class="pdf-h3">Trong quá trình học tập, sinh viên thường gặp những khái niệm khó hiểu</h3>
+<h3 class="pdf-h3">hoặc có tính trừu tượng cao. Nếu AI chỉ đưa ra định nghĩa học thuật đơn</h3>
+<h3 class="pdf-h3">thuần, người học rất khó hình dung và ghi nhớ. Vì vậy, prompt cần hướng</h3>
+<h3 class="pdf-h3">AI đến cách giải thích mang tính sư phạm hơn.</h3>
+<h3 class="pdf-h3">Khái niệm được lựa chọn trong bài thử nghiệm là “Machine Learning”.</h3>
+<div class="pdf-item"><span class="pdf-num">1</span><div class="pdf-item-body">Prompt cơ bản: Giải thích Machine Learning.</div></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p8_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p8_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p9_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">2</span><div class="pdf-item-body">Prompt cải tiến: Hãy giải thích khái niệm Machine Learning cho sinh viên</div></div>
+<h3 class="pdf-h3">năm nhất ngành công nghệ thông tin. Bao gồm:</h3>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>định nghĩa</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>cách hoạt động cơ bản</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>ví dụ thực tế</span></div>
+<h3 class="pdf-h3">Sử dụng ngôn ngữ đơn giản và dễ hiểu.</h3>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p10_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p10_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p11_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">3</span><div class="pdf-item-body">Prompt nâng cao: Bạn là một giảng viên đại học đang dạy môn AI nhập</div></div>
+<h3 class="pdf-h3">môn cho sinh viên năm nhất. Hãy giải thích Machine Learning theo trình</h3>
+<h3 class="pdf-h3">tự:</h3>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Định nghĩa đơn giản</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Cách máy học từ dữ liệu</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Ví dụ thực tế trong đời sống</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>So sánh Machine Learning với Deep Learning và Generative AI</span></div>
+<h3 class="pdf-h3">Sau đó:</h3>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>tạo một phép so sánh dễ nhớ</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>đưa ra 3 lỗi hiểu sai phổ biến của sinh viên</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>giải thích vì sao các lỗi đó sai</span></div>
+<h3 class="pdf-h3">Hãy trình bày như đang giảng bài trên lớp.</h3>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p12_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p12_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p13_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p13_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p14_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p14_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p15_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<h3 class="pdf-h3">Kết quả từ prompt cơ bản tương đối ngắn và mang tính định nghĩa. AI chủ</h3>
+<h3 class="pdf-h3">yếu cung cấp khái niệm tổng quát mà chưa quan tâm đến đối tượng tiếp</h3>
+<h3 class="pdf-h3">nhận thông tin. Điều này khiến phần giải thích trở nên khá khô khan và</h3>
+<h3 class="pdf-h3">khó tiếp cận đối với người mới học.</h3>
+<h3 class="pdf-h3">Ở prompt cải tiến, chất lượng phản hồi được nâng lên đáng kể. AI bắt đầu</h3>
+<h3 class="pdf-h3">sử dụng ví dụ thực tế và đơn giản hóa thuật ngữ chuyên môn. Điều này cho</h3>
+<h3 class="pdf-h3">thấy việc xác định rõ đối tượng người học có ảnh hưởng trực tiếp đến</h3>
+<h3 class="pdf-h3">phong cách diễn đạt của AI.</h3>
+<h3 class="pdf-h3">Prompt nâng cao cho phản hồi có tính sư phạm cao nhất. Cách chia nội</h3>
+<h3 class="pdf-h3">dung thành từng bước giúp quá trình giải thích trở nên logic hơn. Đặc biệt,</h3>
+<h3 class="pdf-h3">việc yêu cầu AI đưa ra các lỗi hiểu sai phổ biến khiến phản hồi mang tính</h3>
+<h3 class="pdf-h3">phản biện và hỗ trợ học sâu hơn thay vì chỉ truyền đạt kiến thức một chiều.</h3>
+<h3 class="pdf-h3">Đây là điểm khác biệt rõ rệt giữa prompt nâng cao và hai phiên bản trước.</h3>
+<h3 class="pdf-h3">Phiên</h3>
+<h3 class="pdf-h3">bản</h3>
+<h3 class="pdf-h3">prompt</h3>
+<h3 class="pdf-h3">Đặc</h3>
+<h3 class="pdf-h3">điểm</h3>
+<h3 class="pdf-h3">prompt</h3>
+<h3 class="pdf-h3">Chất lượng</h3>
+<h3 class="pdf-h3">kết quả</h3>
+<h3 class="pdf-h3">Điểm mạnh</h3>
+<h3 class="pdf-h3">Hạn chế</h3>
+<h3 class="pdf-h3">Cơ bản</h3>
+<h3 class="pdf-h3">Chỉ yêu cầu</h3>
+<h3 class="pdf-h3">giải thích khái</h3>
+<h3 class="pdf-h3">niệm</h3>
+<h3 class="pdf-h3">AI trả lời</h3>
+<h3 class="pdf-h3">mang</h3>
+<h3 class="pdf-h3">tính</h3>
+<h3 class="pdf-h3">định nghĩa</h3>
+<h3 class="pdf-h3">Nhanh</h3>
+<h3 class="pdf-h3">và</h3>
+<h3 class="pdf-h3">đơn giản</h3>
+<h3 class="pdf-h3">Khó</h3>
+<h3 class="pdf-h3">hiểu</h3>
+<h3 class="pdf-h3">với</h3>
+<h3 class="pdf-h3">người</h3>
+<h3 class="pdf-h3">mới học</h3>
+<h3 class="pdf-h3">Cải tiến</h3>
+<h3 class="pdf-h3">Có xác định</h3>
+<h3 class="pdf-h3">đối tượng và</h3>
+<h3 class="pdf-h3">yêu cầu ví dụ</h3>
+<h3 class="pdf-h3">AI sử dụng</h3>
+<h3 class="pdf-h3">ngôn ngữ dễ</h3>
+<h3 class="pdf-h3">hiểu hơn</h3>
+<h3 class="pdf-h3">Có ví dụ thực</h3>
+<h3 class="pdf-h3">tế, dễ tiếp</h3>
+<h3 class="pdf-h3">cận</h3>
+<h3 class="pdf-h3">Chưa có</h3>
+<h3 class="pdf-h3">chiều sâu</h3>
+<h3 class="pdf-h3">phân tích</h3>
+<h3 class="pdf-h3">Nâng cao</h3>
+<h3 class="pdf-h3">Có</h3>
+<h3 class="pdf-h3">role</h3>
+<h3 class="pdf-h3">prompting,</h3>
+<h3 class="pdf-h3">phân</h3>
+<h3 class="pdf-h3">tầng</h3>
+<h3 class="pdf-h3">kiến thức và</h3>
+<h3 class="pdf-h3">yêu cầu phản</h3>
+<h3 class="pdf-h3">biện</h3>
+<h3 class="pdf-h3">Phản</h3>
+<h3 class="pdf-h3">hồi</h3>
+<h3 class="pdf-h3">logic, mang</h3>
+<h3 class="pdf-h3">tính</h3>
+<h3 class="pdf-h3">giảng</h3>
+<h3 class="pdf-h3">dạy</h3>
+<h3 class="pdf-h3">Hỗ trợ hiểu</h3>
+<h3 class="pdf-h3">bản chất khái</h3>
+<h3 class="pdf-h3">niệm</h3>
+<h3 class="pdf-h3">Cần prompt</h3>
+<h3 class="pdf-h3">dài và chi tiết</h3>
+<h3 class="pdf-h3">IV.</h3>
+<h3 class="pdf-h3">Tác vụ 3: Tạo bộ câu hỏi ôn tập</h3>
+<h3 class="pdf-h3">Việc tạo câu hỏi ôn tập giúp người học kiểm tra mức độ hiểu bài và ghi</h3>
+<h3 class="pdf-h3">nhớ kiến thức tốt hơn. Tuy nhiên, nếu prompt quá đơn giản, AI thường tạo</h3>
+<h3 class="pdf-h3">câu hỏi thiếu đa dạng hoặc không phù hợp với trình độ người học.</h3>
+<h3 class="pdf-h3">Chủ đề được lựa chọn là “Machine Learning cơ bản”.</h3>
+<div class="pdf-item"><span class="pdf-num">1</span><div class="pdf-item-body">Prompt cơ bản: Hãy tạo câu hỏi ôn tập về Machine Learning.</div></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p16_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p17_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p17_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">2</span><div class="pdf-item-body">Prompt cải tiến: Hãy tạo 10 câu hỏi ôn tập về Machine Learning cho sinh viên</div></div>
+<h3 class="pdf-h3">năm nhất. Yêu cầu:</h3>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>5 câu trắc nghiệm</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>5 câu tự luận ngắn</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>có đáp án</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>độ khó từ dễ đến trung bình</span></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p18_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p18_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p19_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p19_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">3</span><div class="pdf-item-body">Prompt nâng cao: Bạn là giảng viên đại học đang chuẩn bị bài kiểm tra giữa</div></div>
+<h3 class="pdf-h3">kỳ môn AI cơ bản. Hãy tạo bộ câu hỏi ôn tập về Machine Learning theo cấu</h3>
+<h3 class="pdf-h3">trúc sau:</h3>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Phần A: 5 câu trắc nghiệm kiểm tra kiến thức cơ bản</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Phần B: 3 câu giải thích khái niệm</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>Phần C: 2 câu vận dụng tình huống thực tế</span></div>
+<h3 class="pdf-h3">Mỗi câu cần có:</h3>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>đáp án</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>giải thích vì sao đáp án đúng</span></div>
+<div class="pdf-bullet"><span class="pdf-dot">•</span><span>mức độ tư duy theo Bloom’s Taxonomy</span></div>
+<h3 class="pdf-h3">Yêu cầu câu hỏi rõ ràng, không đánh đố và phù hợp với sinh viên năm nhất.</h3>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p20_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p20_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p21_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai3_p21_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<h3 class="pdf-h3">Prompt cơ bản tạo ra các câu hỏi khá đơn giản và thiếu hệ thống. Một số câu</h3>
+<h3 class="pdf-h3">hỏi bị lặp ý hoặc không có đáp án đi kèm nên khó sử dụng cho việc tự học.</h3>
+<h3 class="pdf-h3">Prompt cải tiến giúp AI tạo ra bộ câu hỏi đa dạng hơn nhờ có giới hạn số lượng,</h3>
+<h3 class="pdf-h3">dạng câu hỏi và độ khó. Kết quả trở nên thực tế hơn trong bối cảnh ôn tập học</h3>
+<h3 class="pdf-h3">phần.</h3>
+<h3 class="pdf-h3">Prompt nâng cao cho thấy hiệu quả vượt trội. Việc yêu cầu phân loại câu hỏi</h3>
+<h3 class="pdf-h3">theo Bloom’s Taxonomy khiến AI tạo ra các cấp độ tư duy khác nhau thay vì</h3>
+<h3 class="pdf-h3">chỉ kiểm tra khả năng ghi nhớ. Ngoài ra, phần giải thích đáp án giúp người</h3>
+<h3 class="pdf-h3">học hiểu bản chất vấn đề chứ không chỉ học thuộc lòng. Điều này cho thấy</h3>
+<h3 class="pdf-h3">prompt engineering không chỉ cải thiện chất lượng nội dung mà còn nâng cao</h3>
+<h3 class="pdf-h3">giá trị sư phạm của phản hồi AI.</h3>
+<h3 class="pdf-h3">Phiên</h3>
+<h3 class="pdf-h3">bản</h3>
+<h3 class="pdf-h3">prompt</h3>
+<h3 class="pdf-h3">Đặc</h3>
+<h3 class="pdf-h3">điểm</h3>
+<h3 class="pdf-h3">prompt</h3>
+<h3 class="pdf-h3">Chất lượng</h3>
+<h3 class="pdf-h3">kết quả</h3>
+<h3 class="pdf-h3">Điểm mạnh</h3>
+<h3 class="pdf-h3">Hạn chế</h3>
+<h3 class="pdf-h3">Cơ bản</h3>
+<h3 class="pdf-h3">Yêu cầu tạo</h3>
+<h3 class="pdf-h3">câu hỏi chung</h3>
+<h3 class="pdf-h3">chung</h3>
+<h3 class="pdf-h3">Câu hỏi đơn</h3>
+<h3 class="pdf-h3">giản,</h3>
+<h3 class="pdf-h3">thiếu</h3>
+<h3 class="pdf-h3">cấu trúc</h3>
+<h3 class="pdf-h3">Dễ</h3>
+<h3 class="pdf-h3">nhập</h3>
+<h3 class="pdf-h3">prompt</h3>
+<h3 class="pdf-h3">Nội dung dễ</h3>
+<h3 class="pdf-h3">lặp lại</h3>
+<h3 class="pdf-h3">Cải tiến</h3>
+<h3 class="pdf-h3">Có số lượng,</h3>
+<h3 class="pdf-h3">dạng câu hỏi</h3>
+<h3 class="pdf-h3">và đáp án</h3>
+<h3 class="pdf-h3">Bộ câu hỏi</h3>
+<h3 class="pdf-h3">đa dạng hơn</h3>
+<h3 class="pdf-h3">Phù hợp ôn</h3>
+<h3 class="pdf-h3">tập cơ bản</h3>
+<h3 class="pdf-h3">Chưa</h3>
+<h3 class="pdf-h3">phân</h3>
+<h3 class="pdf-h3">hóa tư duy</h3>
+<h3 class="pdf-h3">Nâng cao</h3>
+<h3 class="pdf-h3">Áp</h3>
+<h3 class="pdf-h3">dụng</h3>
+<h3 class="pdf-h3">Bloom’s</h3>
+<h3 class="pdf-h3">Taxonomy</h3>
+<h3 class="pdf-h3">và</h3>
+<h3 class="pdf-h3">role</h3>
+<h3 class="pdf-h3">prompting</h3>
+<h3 class="pdf-h3">Bộ câu hỏi</h3>
+<h3 class="pdf-h3">có chiều sâu</h3>
+<h3 class="pdf-h3">và tính học</h3>
+<h3 class="pdf-h3">thuật cao</h3>
+<h3 class="pdf-h3">Kiểm</h3>
+<h3 class="pdf-h3">tra</h3>
+<h3 class="pdf-h3">được</h3>
+<h3 class="pdf-h3">nhiều</h3>
+<h3 class="pdf-h3">cấp độ tư duy</h3>
+<h3 class="pdf-h3">Thiết</h3>
+<h3 class="pdf-h3">kế</h3>
+<h3 class="pdf-h3">prompt phức</h3>
+<h3 class="pdf-h3">tạp hơn</h3>
+<h3 class="pdf-h3">V.</h3>
+<h3 class="pdf-h3">Phân tích mối liên hệ giữa cấu trúc prompt và chất lượng phản hồi</h3>
+<h3 class="pdf-h3">Qua quá trình thử nghiệm, có thể nhận thấy rằng hiệu quả của AI không</h3>
+<h3 class="pdf-h3">phụ thuộc hoàn toàn vào khả năng của mô hình mà còn chịu ảnh hưởng</h3>
+<h3 class="pdf-h3">mạnh bởi cách người dùng giao nhiệm vụ. Prompt càng rõ ràng thì AI càng</h3>
+<h3 class="pdf-h3">hiểu đúng mục tiêu cần thực hiện.</h3>
+<h3 class="pdf-h3">Các prompt cơ bản thường tạo ra phản hồi ngắn và thiếu ổn định vì AI phải</h3>
+<h3 class="pdf-h3">tự suy đoán mong muốn của người dùng. Điều này làm tăng tính mơ hồ và</h3>
+<h3 class="pdf-h3">khiến chất lượng đầu ra thay đổi đáng kể giữa các lần thử nghiệm.</h3>
+<h3 class="pdf-h3">Ngược lại, các prompt cải tiến giúp giảm sự mơ hồ bằng cách bổ sung ngữ</h3>
+<h3 class="pdf-h3">cảnh, giới hạn độ dài và xác định đối tượng người học. Những yếu tố này</h3>
+<h3 class="pdf-h3">giúp AI ưu tiên đúng loại thông tin cần thiết và điều chỉnh cách diễn đạt</h3>
+<h3 class="pdf-h3">phù hợp hơn.</h3>
+<h3 class="pdf-h3">Hiệu quả rõ rệt nhất xuất hiện ở prompt nâng cao. Các kỹ thuật như role</h3>
+<h3 class="pdf-h3">prompting, structured prompting và chain-of-thought prompting giúp AI</h3>
+<h3 class="pdf-h3">xử lý nhiệm vụ theo trình tự logic thay vì phản hồi tự phát. Khi AI được</h3>
+<h3 class="pdf-h3">yêu cầu “đóng vai” giảng viên hoặc trợ giảng, phản hồi trở nên có tính</h3>
+<h3 class="pdf-h3">hướng dẫn và sư phạm hơn. Bên cạnh đó, việc chia nhiệm vụ thành từng</h3>
+<h3 class="pdf-h3">bước nhỏ giúp AI tổ chức nội dung chặt chẽ và hạn chế bỏ sót ý quan trọng.</h3>
+<h3 class="pdf-h3">Một phát hiện đáng chú ý trong quá trình thử nghiệm là prompt dài hơn</h3>
+<h3 class="pdf-h3">chưa chắc tốt hơn. Một prompt chỉ thực sự hiệu quả khi các yêu cầu được</h3>
+<h3 class="pdf-h3">trình bày rõ ràng, có mục tiêu cụ thể và phù hợp với ngữ cảnh học tập.</h3>
+<h3 class="pdf-h3">Điều quan trọng không phải là độ dài của prompt mà là chất lượng của</h3>
+<h3 class="pdf-h3">thông tin định hướng mà prompt cung cấp cho AI.</h3>
+<h3 class="pdf-h3">VI.</h3>
+<h3 class="pdf-h3">Nguyên tắc viết prompt hiệu quả</h3>
+<h3 class="pdf-h3">Từ kết quả thử nghiệm, có thể rút ra một số nguyên tắc quan trọng trong</h3>
+<h3 class="pdf-h3">prompt engineering phục vụ học tập.</h3>
+<h3 class="pdf-h3">Trước hết, prompt cần xác định rõ mục tiêu của nhiệm vụ. AI sẽ phản hồi</h3>
+<h3 class="pdf-h3">chính xác hơn khi biết người dùng muốn tóm tắt, giải thích hay tạo câu hỏi</h3>
+<h3 class="pdf-h3">ôn tập.</h3>
+<h3 class="pdf-h3">Thứ hai, việc xác định đối tượng người học giúp AI điều chỉnh độ khó và</h3>
+<h3 class="pdf-h3">cách diễn đạt phù hợp hơn. Trong bài thử nghiệm, các prompt dành cho</h3>
+<h3 class="pdf-h3">“sinh viên năm nhất” luôn cho kết quả dễ hiểu hơn so với prompt chung</h3>
+<h3 class="pdf-h3">chung.</h3>
+<h3 class="pdf-h3">Ngoài ra, quy định rõ định dạng đầu ra cũng giúp phản hồi trở nên dễ sử</h3>
+<h3 class="pdf-h3">dụng hơn. Ví dụ, yêu cầu AI trình bày theo từng phần hoặc kèm đáp án</h3>
+<h3 class="pdf-h3">giúp tiết kiệm đáng kể thời gian xử lý lại thông tin.</h3>
+<h3 class="pdf-h3">Một nguyên tắc quan trọng khác là chia nhiệm vụ thành nhiều bước nhỏ.</h3>
+<h3 class="pdf-h3">Điều này giúp AI suy luận có hệ thống và hạn chế bỏ sót thông tin. Kỹ</h3>
+<h3 class="pdf-h3">thuật này đặc biệt hiệu quả trong các tác vụ học thuật có nhiều yêu cầu</h3>
+<h3 class="pdf-h3">phức tạp.</h3>
+<h3 class="pdf-h3">Cuối cùng, role prompting là một kỹ thuật có tác động rất mạnh đến chất</h3>
+<h3 class="pdf-h3">lượng phản hồi. Khi AI được đặt vào vai trò cụ thể như “giảng viên đại</h3>
+<h3 class="pdf-h3">học” hoặc “trợ giảng”, câu trả lời thường có chiều sâu hơn và phù hợp với</h3>
+<h3 class="pdf-h3">mục tiêu học tập hơn.</h3>
+<h3 class="pdf-h3">VII. Kết luận</h3>
+<h3 class="pdf-h3">Qua quá trình thử nghiệm, có thể thấy prompt engineering đóng vai trò</h3>
+<h3 class="pdf-h3">quan trọng trong việc khai thác hiệu quả các mô hình ngôn ngữ lớn phục</h3>
+<h3 class="pdf-h3">vụ học tập. Các prompt có cấu trúc rõ ràng, cung cấp đầy đủ ngữ cảnh và</h3>
+<h3 class="pdf-h3">xác định cụ thể đầu ra thường tạo ra phản hồi chính xác, logic và hữu ích</h3>
+<h3 class="pdf-h3">hơn đáng kể so với các prompt đơn giản.</h3>
+<h3 class="pdf-h3">Bài báo cáo cũng cho thấy rằng AI không hoàn toàn thay thế tư duy của</h3>
+<h3 class="pdf-h3">người học mà hoạt động hiệu quả nhất khi người dùng biết cách giao tiếp</h3>
+<h3 class="pdf-h3">và định hướng cho hệ thống. Vì vậy, kỹ năng viết prompt đang dần trở</h3>
+<h3 class="pdf-h3">thành một năng lực học tập quan trọng trong thời đại AI hiện nay.</h3>`,
+  4: `<h2 class="pdf-h2">BÁO CÁO CÁ NHÂN ỨNG DỤNG CÁC CÔNG CỤ HỢP TÁC TRỰC</h2>
+<h2 class="pdf-h2">TUYẾN TRONG QUÁ TRÌNH THỰC HIỆN DỰ ÁN NHÓM</h2>
+<h2 class="pdf-h2">I. MỞ ĐẦU</h2>
+<p class="pdf-p">Trong bối cảnh chuyển đổi số ngày càng phát triển, việc sử dụng các công cụ hợp tác trực tuyến</p>
+<p class="pdf-p">đã trở thành một phần quan trọng trong học tập và làm việc nhóm. Các công cụ này không chỉ hỗ</p>
+<p class="pdf-p">trợ giao tiếp mà còn giúp quản lý công việc, chia sẻ tài liệu và theo dõi tiến độ thực hiện một cách</p>
+<p class="pdf-p">hiệu quả. Thông qua dự án nhóm được thực hiện trong học phần, em đã có cơ hội trải nghiệm và</p>
+<p class="pdf-p">sử dụng nhiều công cụ hợp tác trực tuyến nhằm nâng cao hiệu quả làm việc cá nhân cũng như khả</p>
+<p class="pdf-p">năng phối hợp với các thành viên khác.</p>
+<p class="pdf-p">Trong quá trình thực hiện dự án, em đã sử dụng bốn công cụ chính gồm Trello để quản lý nhiệm</p>
+<p class="pdf-p">vụ, Google Docs để soạn thảo tài liệu cộng tác, Google Drive để lưu trữ và chia sẻ tệp tin, và</p>
+<p class="pdf-p">Messenger để trao đổi thông tin với các thành viên trong nhóm. Báo cáo này tập trung mô tả các</p>
+<p class="pdf-p">hoạt động cá nhân đã thực hiện trên từng công cụ, đánh giá hiệu quả sử dụng cũng như phân tích</p>
+<p class="pdf-p">những khó khăn gặp phải và giải pháp khắc phục.</p>
+<h2 class="pdf-h2">II. QUÁ TRÌNH SỬ DỤNG CÁC CÔNG CỤ HỢP TÁC TRỰC TUYẾN</h2>
+<div class="pdf-item"><span class="pdf-num">1</span><div class="pdf-item-body">Sử dụng Trello để quản lý nhiệm vụ cá nhân</div></div>
+<p class="pdf-p">Trello là công cụ được sử dụng để quản lý các công việc trong dự án. Nhóm đã xây dựng một bảng</p>
+<p class="pdf-p">quản lý công việc với các danh mục như To Do, In Progress và Done nhằm theo dõi tiến độ thực</p>
+<p class="pdf-p">hiện của từng nhiệm vụ.</p>
+<p class="pdf-p">Trong vai trò thành viên nhóm, em sử dụng Trello để theo dõi các đầu việc được giao và cập nhật</p>
+<p class="pdf-p">tiến độ hoàn thành. Mỗi nhiệm vụ được tạo thành một thẻ công việc riêng, trong đó có mô tả nội</p>
+<p class="pdf-p">dung, thời hạn thực hiện, người phụ trách và các bước cần hoàn thành. Để tăng tính trực quan, em</p>
+<p class="pdf-p">sử dụng các nhãn màu (labels) nhằm phân loại nhiệm vụ theo từng nội dung công việc khác nhau.</p>
+<p class="pdf-p">Ngoài ra, em còn sử dụng checklist để chia nhỏ công việc thành các bước cụ thể, giúp dễ dàng</p>
+<p class="pdf-p">theo dõi tiến độ thực hiện.</p>
+<p class="pdf-p">Trong suốt quá trình thực hiện dự án, em thường xuyên cập nhật trạng thái nhiệm vụ, bổ sung nhận</p>
+<p class="pdf-p">xét và theo dõi các công việc đã hoàn thành. Việc sử dụng Trello giúp em quản lý thời gian hiệu</p>
+<p class="pdf-p">quả hơn, hạn chế tình trạng bỏ sót công việc và dễ dàng nắm bắt tiến độ chung của nhóm.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p2_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p2_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p3_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p3_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">2</span><div class="pdf-item-body">Sử dụng Google Docs để cộng tác xây dựng nội dung</div></div>
+<p class="pdf-p">Google Docs được sử dụng làm nền tảng soạn thảo nội dung chung của nhóm. Đây là công cụ hỗ</p>
+<p class="pdf-p">trợ nhiều người cùng chỉnh sửa một tài liệu trong thời gian thực, giúp quá trình cộng tác trở nên</p>
+<p class="pdf-p">thuận tiện và hiệu quả hơn.</p>
+<p class="pdf-p">Trong dự án, em trực tiếp tham gia viết nội dung, chỉnh sửa bố cục, bổ sung thông tin và rà soát</p>
+<p class="pdf-p">lỗi trình bày trên tài liệu chung. Bên cạnh đó, em cũng sử dụng tính năng bình luận để trao đổi ý</p>
+<p class="pdf-p">kiến với các thành viên khác, góp ý về nội dung và đề xuất các điều chỉnh cần thiết.</p>
+<p class="pdf-p">Một trong những ưu điểm nổi bật của Google Docs là khả năng lưu trữ lịch sử chỉnh sửa. Tính</p>
+<p class="pdf-p">năng này cho phép theo dõi các nội dung đã được bổ sung hoặc chỉnh sửa bởi từng thành viên, từ</p>
+<p class="pdf-p">đó giúp quá trình làm việc trở nên minh bạch hơn. Nhờ sử dụng Google Docs, việc phối hợp xây</p>
+<p class="pdf-p">dựng nội dung giữa các thành viên được thực hiện nhanh chóng và hiệu quả mà không cần gửi</p>
+<p class="pdf-p">nhiều</p>
+<p class="pdf-p">phiên</p>
+<p class="pdf-p">bản</p>
+<p class="pdf-p">tài</p>
+<p class="pdf-p">liệu</p>
+<p class="pdf-p">khác</p>
+<p class="pdf-p">nhau.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p4_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p5_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p5_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">3</span><div class="pdf-item-body">Sử dụng Google Drive để lưu trữ và chia sẻ tài liệu</div></div>
+<p class="pdf-p">Google Drive được sử dụng làm kho lưu trữ chung của nhóm nhằm quản lý toàn bộ tài liệu phục</p>
+<p class="pdf-p">vụ cho dự án. Để thuận tiện cho việc tìm kiếm và sử dụng tài liệu, nhóm đã xây dựng hệ thống thư</p>
+<p class="pdf-p">mục theo từng nội dung công việc.</p>
+<p class="pdf-p">Em tham gia sắp xếp và lưu trữ các tài liệu liên quan vào các thư mục phù hợp như tài liệu tham</p>
+<p class="pdf-p">khảo, hình ảnh, báo cáo và sản phẩm hoàn chỉnh. Các tệp tin được đặt tên theo quy tắc thống nhất</p>
+<p class="pdf-p">nhằm tránh nhầm lẫn giữa các phiên bản và giúp việc tìm kiếm trở nên dễ dàng hơn.</p>
+<p class="pdf-p">Ngoài việc lưu trữ tài liệu, Google Drive còn hỗ trợ chia sẻ tệp với các quyền truy cập khác nhau</p>
+<p class="pdf-p">như chỉ xem hoặc chỉnh sửa. Điều này giúp nhóm kiểm soát tốt hơn việc sử dụng tài liệu trong quá</p>
+<p class="pdf-p">trình cộng tác. Việc sử dụng Google Drive đã góp phần nâng cao hiệu quả quản lý tài nguyên và</p>
+<p class="pdf-p">giảm thiểu nguy cơ thất lạc dữ liệu.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p7_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p7_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p8_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p8_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p9_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p9_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p10_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-item"><span class="pdf-num">4</span><div class="pdf-item-body">Sử dụng Messenger để giao tiếp và phối hợp làm việc nhóm</div></div>
+<p class="pdf-p">Messenger là công cụ được nhóm sử dụng để trao đổi thông tin và phối hợp thực hiện dự án. Đây</p>
+<p class="pdf-p">là nền tảng quen thuộc, dễ sử dụng và phù hợp với nhu cầu liên lạc thường xuyên của các thành</p>
+<p class="pdf-p">viên.</p>
+<p class="pdf-p">Trong quá trình thực hiện dự án, em tích cực tham gia các cuộc thảo luận trên nhóm Messenger,</p>
+<p class="pdf-p">trao đổi ý kiến về nội dung công việc, cập nhật tiến độ thực hiện và phản hồi các yêu cầu từ các</p>
+<p class="pdf-p">thành viên khác. Ngoài ra, em cũng sử dụng Messenger để chia sẻ tài liệu, gửi thông báo và hỗ trợ</p>
+<p class="pdf-p">giải đáp các thắc mắc liên quan đến nhiệm vụ được giao.</p>
+<p class="pdf-p">Nhờ tính năng nhắn tin nhanh và khả năng lưu lại lịch sử trò chuyện, Messenger giúp nhóm duy</p>
+<p class="pdf-p">trì kết nối liên tục, đảm bảo các thông tin quan trọng được truyền đạt đầy đủ và kịp thời. Điều này</p>
+<p class="pdf-p">góp phần nâng cao hiệu quả phối hợp giữa các thành viên trong suốt quá trình thực hiện dự án.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p11_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p11_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p12_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p12_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p13_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p13_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p13_2.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p14_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p14_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p15_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai4_p15_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<h2 class="pdf-h2">III. NHỮNG THÁCH THỨC GẶP PHẢI VÀ GIẢI PHÁP KHẮC PHỤC</h2>
+<div class="pdf-item"><span class="pdf-num">1</span><div class="pdf-item-body">Khó khăn trong việc sắp xếp thời gian làm việc giữa các thành viên</div></div>
+<p class="pdf-p">Do mỗi thành viên có lịch học và thời gian biểu khác nhau nên việc tổ chức các buổi làm việc</p>
+<p class="pdf-p">chung gặp nhiều khó khăn. Nhiều thời điểm không thể tập hợp đầy đủ thành viên để trao đổi trực</p>
+<p class="pdf-p">tiếp.</p>
+<p class="pdf-p">Giải pháp:</p>
+<p class="pdf-p">Nhóm tận dụng Messenger để trao đổi thông tin và cập nhật tiến độ bất cứ lúc nào. Các nội dung</p>
+<p class="pdf-p">quan trọng được gửi vào nhóm chung để mọi thành viên đều có thể theo dõi và phản hồi khi thuận</p>
+<p class="pdf-p">tiện.</p>
+<div class="pdf-item"><span class="pdf-num">2</span><div class="pdf-item-body">Khó khăn trong việc theo dõi tiến độ công việc</div></div>
+<p class="pdf-p">Trong quá trình thực hiện dự án, việc nắm bắt tình trạng hoàn thành của từng nhiệm vụ đôi khi gặp</p>
+<p class="pdf-p">khó khăn nếu chỉ trao đổi thông qua tin nhắn.</p>
+<p class="pdf-p">Giải pháp:</p>
+<p class="pdf-p">Trello được sử dụng để quản lý công việc một cách trực quan. Mỗi nhiệm vụ đều được phân công</p>
+<p class="pdf-p">cụ thể, gắn thời hạn hoàn thành và cập nhật trạng thái thường xuyên. Điều này giúp nhóm dễ dàng</p>
+<p class="pdf-p">theo dõi tiến độ cũng như phân bổ công việc hợp lý.</p>
+<div class="pdf-item"><span class="pdf-num">3</span><div class="pdf-item-body">Khó khăn trong việc quản lý tài liệu và phiên bản tệp</div></div>
+<p class="pdf-p">Khi có nhiều thành viên cùng tham gia chỉnh sửa, nguy cơ nhầm lẫn giữa các phiên bản tài liệu là</p>
+<p class="pdf-p">điều dễ xảy ra.</p>
+<p class="pdf-p">Giải pháp:</p>
+<p class="pdf-p">Nhóm sử dụng Google Drive làm nơi lưu trữ tập trung và thống nhất cách đặt tên tệp. Đồng thời,</p>
+<p class="pdf-p">Google Docs được sử dụng để chỉnh sửa trực tiếp trên cùng một tài liệu nhằm hạn chế việc tạo</p>
+<p class="pdf-p">nhiều phiên bản khác nhau.</p>
+<h2 class="pdf-h2">IV. ĐÁNH GIÁ HIỆU QUẢ SỬ DỤNG CÁC CÔNG CỤ</h2>
+<p class="pdf-p">Sau quá trình sử dụng, em nhận thấy các công cụ hợp tác trực tuyến đã hỗ trợ đáng kể cho việc</p>
+<p class="pdf-p">thực hiện dự án nhóm.</p>
+<p class="pdf-p">Về mặt tích cực, Trello giúp quản lý công việc hiệu quả và theo dõi tiến độ một cách trực quan.</p>
+<p class="pdf-p">Google Docs hỗ trợ cộng tác nội dung theo thời gian thực, giúp tiết kiệm thời gian chỉnh sửa và</p>
+<p class="pdf-p">tổng hợp tài liệu. Google Drive giúp lưu trữ tài liệu khoa học, an toàn và dễ dàng chia sẻ. Messenger</p>
+<p class="pdf-p">tạo điều kiện thuận lợi cho việc trao đổi thông tin và giải quyết các vấn đề phát sinh trong quá trình</p>
+<p class="pdf-p">làm việc nhóm.</p>
+<p class="pdf-p">Bên cạnh những ưu điểm, vẫn tồn tại một số hạn chế như phụ thuộc vào kết nối Internet, số lượng</p>
+<p class="pdf-p">thông báo lớn có thể gây phân tán sự tập trung và một số thành viên chưa tận dụng hết các tính</p>
+<p class="pdf-p">năng nâng cao của công cụ.</p>
+<p class="pdf-p">Tuy nhiên, nhìn chung các công cụ đã góp phần nâng cao hiệu quả làm việc nhóm, hỗ trợ quản lý</p>
+<p class="pdf-p">công việc tốt hơn và giúp dự án được triển khai thuận lợi.</p>
+<h2 class="pdf-h2">V. KẾT LUẬN</h2>
+<p class="pdf-p">Thông qua quá trình thực hiện dự án, em đã có cơ hội sử dụng và trải nghiệm nhiều công cụ hợp</p>
+<p class="pdf-p">tác trực tuyến khác nhau. Việc áp dụng Trello, Google Docs, Google Drive và Messenger đã giúp</p>
+<p class="pdf-p">em nâng cao kỹ năng quản lý công việc cá nhân, kỹ năng giao tiếp, khả năng phối hợp nhóm và</p>
+<p class="pdf-p">kỹ năng làm việc trong môi trường số.</p>
+<p class="pdf-p">Đây là những kỹ năng cần thiết đối với sinh viên trong quá trình học tập cũng như trong môi trường</p>
+<p class="pdf-p">làm việc hiện đại. Từ những trải nghiệm thu được, em nhận thấy việc lựa chọn và sử dụng hiệu</p>
+<p class="pdf-p">quả các công cụ hợp tác trực tuyến có ý nghĩa rất quan trọng đối với thành công của các dự án</p>
+<p class="pdf-p">nhóm.</p>`,
+  5: `<h2 class="pdf-h2">BÁO CÁO QUÁ TRÌNH SỬ DỤNG AI TẠO SINH TRONG SÁNG TẠO NỘI</h2>
+<h3 class="pdf-h3">DUNG</h3>
+<h3 class="pdf-h3">Đề tài: Trí tuệ nhân tạo đang thay đổi việc học tập của sinh viên như thế nào?</h3>
+<h3 class="pdf-h3">I.</h3>
+<h3 class="pdf-h3">Giới thiệu dự án</h3>
+<p class="pdf-p">Trong thời đại chuyển đổi số, trí tuệ nhân tạo (Artificial Intelligence - AI) đang</p>
+<p class="pdf-p">được ứng dụng rộng rãi trong nhiều lĩnh vực, đặc biệt là giáo dục. Các công cụ</p>
+<p class="pdf-p">AI tạo sinh không chỉ hỗ trợ tìm kiếm thông tin mà còn giúp người học xây dựng</p>
+<p class="pdf-p">ý tưởng, chỉnh sửa nội dung và thiết kế sản phẩm sáng tạo. Nhằm tìm hiểu vai</p>
+<p class="pdf-p">trò của AI trong quá trình sáng tạo nội dung, tôi thực hiện dự án viết bài luận với</p>
+<p class="pdf-p">chủ đề “Trí tuệ nhân tạo đang thay đổi việc học tập của sinh viên như thế nào?”.</p>
+<p class="pdf-p">Trong quá trình thực hiện dự án, tôi đã sử dụng bốn công cụ AI gồm ChatGPT,</p>
+<p class="pdf-p">Google Gemini, DALL-E và Canva AI. Mỗi công cụ được sử dụng cho một mục</p>
+<p class="pdf-p">đích khác nhau như tạo nội dung văn bản, bổ sung ý tưởng, tạo hình ảnh minh</p>
+<p class="pdf-p">họa và thiết kế infographic. Sau khi nhận được kết quả từ AI, tôi tiến hành đánh</p>
+<p class="pdf-p">giá, chỉnh sửa và bổ sung ý kiến cá nhân để hoàn thiện sản phẩm cuối cùng.</p>
+<h3 class="pdf-h3">II.</h3>
+<h3 class="pdf-h3">Quá trình sử dụng các công cụ AI</h3>
+<div class="pdf-item"><span class="pdf-num">1</span><div class="pdf-item-body">ChatGPT – Tạo bản nháp bài viết</div></div>
+<p class="pdf-p">Mục</p>
+<p class="pdf-p">đích</p>
+<p class="pdf-p">sử</p>
+<p class="pdf-p">dụng:</p>
+<p class="pdf-p">Sử dụng ChatGPT để xây dựng bản nháp đầu tiên cho bài luận.</p>
+<p class="pdf-p">Prompt: &quot;Viết bài luận khoảng 800 từ về chủ đề 'Trí tuệ nhân tạo đang thay đổi</p>
+<p class="pdf-p">việc học tập của sinh viên như thế nào?'. Bài viết gồm mở bài, lợi ích, thách thức</p>
+<p class="pdf-p">và kết luận.&quot;</p>
+<p class="pdf-p">Đánh giá: Qua quá trình sử dụng, tôi nhận thấy ChatGPT có khả năng tạo nội</p>
+<p class="pdf-p">dung rất nhanh và hiệu quả. Công cụ này giúp xây dựng cấu trúc bài viết rõ ràng,</p>
+<p class="pdf-p">các ý được sắp xếp hợp lý và dễ theo dõi. Tuy nhiên, nội dung do ChatGPT tạo</p>
+<p class="pdf-p">ra vẫn mang tính khái quát, chưa có nhiều ví dụ thực tế và chưa thể hiện được</p>
+<p class="pdf-p">góc nhìn cá nhân của người viết. Vì vậy, tôi cần chỉnh sửa và bổ sung thêm để</p>
+<p class="pdf-p">bài viết trở nên sinh động và có tính thuyết phục hơn</p>
+<div class="pdf-item"><span class="pdf-num">2</span><div class="pdf-item-body">Chỉnh sửa và tích hợp đầu ra của AI</div></div>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai5_p2_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<p class="pdf-p">Kết quả nhận được: ChatGPT tạo ra một bài luận hoàn chỉnh với bố cục rõ ràng</p>
+<p class="pdf-p">gồm phần mở bài, các lợi ích của AI trong học tập, những thách thức khi sử dụng</p>
+<p class="pdf-p">AI và phần kết luận. Nội dung có tính logic, sử dụng ngôn ngữ học thuật và phù</p>
+<p class="pdf-p">hợp với đối tượng sinh viên.</p>
+<h3 class="pdf-h3">VD1: Phần mở bài</h3>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai5_p2_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<p class="pdf-p">Bản nháp do ChatGPT tạo ra có nội dung đúng và đầy đủ nhưng còn mang tính</p>
+<p class="pdf-p">khái quát, chưa thể hiện được góc nhìn của người viết. Vì vậy, tôi đã bổ sung trải</p>
+<p class="pdf-p">nghiệm cá nhân về việc sử dụng các công cụ AI trong học tập nhằm tăng tính</p>
+<p class="pdf-p">chân thực và giúp người đọc dễ liên hệ hơn với chủ đề. Việc chỉnh sửa cũng giúp</p>
+<p class="pdf-p">bài viết thể hiện rõ hơn đóng góp cá nhân thay vì chỉ sử dụng nguyên văn nội</p>
+<p class="pdf-p">dung do AI tạo ra.</p>
+<h3 class="pdf-h3">VD2: Đoạn lợi ích</h3>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai5_p3_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<p class="pdf-p">Đoạn văn ban đầu trình bày lợi ích của AI một cách chung chung và thiếu ví dụ</p>
+<p class="pdf-p">cụ thể. Tôi đã bổ sung tình huống thực tế trong quá trình học tập của bản thân</p>
+<p class="pdf-p">để minh họa rõ hơn cách AI hỗ trợ sinh viên tìm kiếm và xử lý thông tin. Nhờ</p>
+<p class="pdf-p">đó, nội dung trở nên thuyết phục hơn và giúp người đọc hình dung rõ tác động</p>
+<p class="pdf-p">của AI đối với việc học tập.</p>
+<h3 class="pdf-h3">VD3: Đoạn thách thức</h3>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai5_p3_1.png" class="pdf-img" alt="Minh hoa"/></div>
+<p class="pdf-p">Mặc dù ChatGPT đã đề cập đến nguy cơ phụ thuộc vào AI, nội dung vẫn chưa</p>
+<p class="pdf-p">làm nổi bật vai trò của tư duy phản biện trong giáo dục đại học. Vì vậy, tôi bổ</p>
+<p class="pdf-p">sung quan điểm cá nhân về giá trị của quá trình học tập và nhấn mạnh rằng AI</p>
+<p class="pdf-p">chỉ nên đóng vai trò hỗ trợ. Việc chỉnh sửa giúp bài viết có chiều sâu hơn và thể</p>
+<p class="pdf-p">hiện rõ nhận thức của người viết về những thách thức khi ứng dụng AI trong học</p>
+<p class="pdf-p">tập.</p>
+<p class="pdf-p">Sau khi nhận được bản nháp từ ChatGPT, tôi không sử dụng trực tiếp toàn bộ</p>
+<p class="pdf-p">nội dung mà tiến hành đánh giá, chọn lọc và chỉnh sửa nhiều phần của bài viết.</p>
+<p class="pdf-p">Các thay đổi chủ yếu bao gồm bổ sung trải nghiệm cá nhân, thêm ví dụ thực tế,</p>
+<p class="pdf-p">điều chỉnh cách diễn đạt và mở rộng một số ý để tăng tính thuyết phục. Quá trình</p>
+<p class="pdf-p">này giúp sản phẩm cuối cùng phản ánh rõ hơn quan điểm và sự sáng tạo của bản</p>
+<p class="pdf-p">thân, đồng thời giảm sự phụ thuộc vào nội dung do AI tạo ra.</p>
+<div class="pdf-item"><span class="pdf-num">3</span><div class="pdf-item-body">Google Gemini – Bổ sung ý tưởng</div></div>
+<p class="pdf-p">Mục đích sử dụng: Sử dụng Gemini để tìm thêm ví dụ thực tế và xu hướng phát</p>
+<p class="pdf-p">triển của AI trong giáo dục.</p>
+<p class="pdf-p">Prompt: &quot;Viết bài luận về tác động của AI đối với việc học tập của sinh viên. Tập</p>
+<p class="pdf-p">trung vào các ví dụ thực tế và xu hướng trong tương lai.&quot;</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai5_p4_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<p class="pdf-p">Kết quả nhận được: Gemini cung cấp thêm nhiều ví dụ thực tế về việc ứng dụng</p>
+<p class="pdf-p">AI trong học tập, đồng thời đưa ra một số nhận định về xu hướng phát triển của</p>
+<p class="pdf-p">AI trong giáo dục trong tương lai. Những nội dung này giúp tôi mở rộng góc</p>
+<p class="pdf-p">nhìn và có thêm tài liệu để hoàn thiện bài viết.</p>
+<p class="pdf-p">Đánh giá: So với ChatGPT, Gemini có xu hướng đưa ra nhiều ví dụ thực tế và</p>
+<p class="pdf-p">thông tin mang tính cập nhật hơn. Điều này giúp nội dung bài viết trở nên phong</p>
+<p class="pdf-p">phú và gần gũi hơn với thực tiễn. Tuy nhiên, một số ý tưởng còn trùng lặp và</p>
+<p class="pdf-p">cách trình bày đôi khi khá dài dòng, vì vậy tôi phải chọn lọc và rút gọn những</p>
+<p class="pdf-p">nội dung phù hợp trước khi đưa vào sản phẩm cuối cùng.</p>
+<h3 class="pdf-h3">VD1:</h3>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai5_p5_0.png" class="pdf-img" alt="Minh hoa"/></div>
+<p class="pdf-p">Sau khi tham khảo kết quả từ Gemini, tôi nhận thấy công cụ này cung cấp nhiều</p>
+<p class="pdf-p">ví dụ thực tế về các nền tảng giáo dục ứng dụng AI. Vì vậy, tôi bổ sung ví dụ về</p>
+<p class="pdf-p">Duolingo và Khan Academy nhằm minh họa rõ hơn cho khả năng cá nhân hóa</p>
+<p class="pdf-p">việc học của AI, giúp nội dung cụ thể và thuyết phục hơn.</p>
+<h3 class="pdf-h3">VD2:</h3>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai5_p5_1.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<p class="pdf-p">Kết quả từ Gemini đề cập đến xu hướng kết hợp AI với công nghệ VR/AR trong</p>
+<p class="pdf-p">giáo dục. Tôi đã tích hợp ý tưởng này vào phần kết luận để mở rộng góc nhìn về</p>
+<p class="pdf-p">tương lai của AI trong học tập, đồng thời làm cho bài viết có tính cập nhật hơn.</p>
+<p class="pdf-p">So với ChatGPT, Gemini cung cấp nhiều ví dụ thực tế và xu hướng phát triển</p>
+<p class="pdf-p">tương lai hơn. Tôi đã sử dụng Gemini như một nguồn tham khảo bổ sung để mở</p>
+<p class="pdf-p">rộng nội dung bài viết, đặc biệt là các ví dụ về cá nhân hóa học tập bằng AI và</p>
+<p class="pdf-p">xu hướng kết hợp AI với công nghệ thực tế ảo. Tuy nhiên, tôi không sử dụng</p>
+<p class="pdf-p">nguyên văn nội dung do Gemini tạo ra mà chọn lọc, diễn đạt lại và tích hợp vào</p>
+<p class="pdf-p">bài viết nhằm đảm bảo tính nhất quán và thể hiện đóng góp cá nhân.</p>
+<div class="pdf-item"><span class="pdf-num">4</span><div class="pdf-item-body">DALL-E – Tạo hình ảnh minh họa</div></div>
+<p class="pdf-p">Mục đích sử dụng: Tạo hình ảnh minh họa cho bài viết.</p>
+<p class="pdf-p">Prompt: &quot;Tạo hình ảnh sinh viên đại học sử dụng các công cụ AI để học tập trong</p>
+<p class="pdf-p">môi trường lớp học hiện đại.&quot;</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai5_p6_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<p class="pdf-p">Kết quả nhận được: DALL-E tạo ra hình ảnh thể hiện sinh viên sử dụng máy</p>
+<p class="pdf-p">tính và các công cụ AI trong quá trình học tập.</p>
+<p class="pdf-p">Đánh giá DALL-E: DALL-E hỗ trợ tạo hình ảnh minh họa nhanh chóng dựa trên</p>
+<p class="pdf-p">mô tả bằng văn bản. Hình ảnh tạo ra có tính sáng tạo cao và phù hợp với chủ đề</p>
+<p class="pdf-p">nghiên cứu về AI trong giáo dục. Tuy nhiên, một số chi tiết trong hình ảnh chưa</p>
+<p class="pdf-p">hoàn toàn chính xác với mong muốn ban đầu nên cần lựa chọn và điều chỉnh</p>
+<p class="pdf-p">trước khi sử dụng trong sản phẩm cuối cùng.</p>
+<div class="pdf-item"><span class="pdf-num">5</span><div class="pdf-item-body">Canva AI – Thiết kế infographic</div></div>
+<p class="pdf-p">Mục đích sử dụng: Thiết kế infographic tóm tắt lợi ích và thách thức của AI trong</p>
+<p class="pdf-p">giáo dục.</p>
+<p class="pdf-p">Prompt: &quot;Thiết kế infographic hiện đại về AI trong giáo dục với hai nhóm nội</p>
+<p class="pdf-p">dung: lợi ích và thách thức.&quot;</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai5_p7_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<p class="pdf-p">Kết quả nhận được: Canva AI tạo bố cục infographic chuyên nghiệp, giúp trình</p>
+<p class="pdf-p">bày thông tin trực quan hơn.</p>
+<p class="pdf-p">Đánh giá Canva AI: Canva AI giúp quá trình thiết kế infographic trở nên đơn</p>
+<p class="pdf-p">giản và tiết kiệm thời gian hơn. Công cụ này có khả năng đề xuất bố cục, biểu</p>
+<p class="pdf-p">tượng và cách trình bày thông tin khá chuyên nghiệp. Mặc dù vậy, một số thiết</p>
+<p class="pdf-p">kế được tạo tự động vẫn cần chỉnh sửa để phù hợp với nội dung cụ thể của dự</p>
+<p class="pdf-p">án và đảm bảo tính thẩm mỹ của sản phẩm cuối cùng.</p>
+<h3 class="pdf-h3">III.</h3>
+<h3 class="pdf-h3">So sánh các công cụ AI</h3>
+<p class="pdf-p">Trong quá trình thực hiện dự án, tôi đã sử dụng ba công cụ AI chính gồm</p>
+<p class="pdf-p">ChatGPT, Google Gemini và DALL-E. Mặc dù đều thuộc nhóm AI tạo sinh, mỗi</p>
+<p class="pdf-p">công cụ lại có những thế mạnh và hạn chế riêng, đồng thời đóng vai trò khác</p>
+<p class="pdf-p">nhau trong quy trình sáng tạo nội dung.</p>
+<p class="pdf-p">ChatGPT là công cụ được sử dụng đầu tiên để xây dựng bản nháp cho bài viết.</p>
+<p class="pdf-p">Điểm mạnh lớn nhất của ChatGPT là khả năng tạo ra nội dung có cấu trúc rõ</p>
+<p class="pdf-p">ràng, mạch lạc và bám sát yêu cầu của người dùng. Chỉ với một prompt đơn giản,</p>
+<p class="pdf-p">công cụ này có thể tạo ra một bài luận hoàn chỉnh gồm mở bài, thân bài và kết</p>
+<p class="pdf-p">luận. Điều này giúp tiết kiệm đáng kể thời gian lập dàn ý và xây dựng nội dung</p>
+<p class="pdf-p">ban đầu. Tuy nhiên, hạn chế của ChatGPT là nội dung đôi khi còn mang tính</p>
+<p class="pdf-p">khái quát và thiếu các ví dụ thực tế. Một số đoạn văn tuy đúng về mặt thông tin</p>
+<p class="pdf-p">nhưng chưa thể hiện được góc nhìn cá nhân hoặc tính thuyết phục cao. Vì vậy,</p>
+<p class="pdf-p">người sử dụng vẫn cần chỉnh sửa và bổ sung để tạo nên một sản phẩm mang dấu</p>
+<p class="pdf-p">ấn riêng.</p>
+<p class="pdf-p">Khác với ChatGPT, Google Gemini tỏ ra nổi bật hơn trong việc cung cấp ví dụ</p>
+<p class="pdf-p">thực tế và các xu hướng mới liên quan đến chủ đề nghiên cứu. Khi được yêu cầu</p>
+<p class="pdf-p">phân tích tác động của AI đối với sinh viên, Gemini không chỉ trình bày các lợi</p>
+<p class="pdf-p">ích và thách thức mà còn đưa ra nhiều ví dụ cụ thể như Khan Academy, Duolingo,</p>
+<p class="pdf-p">GitHub Copilot hay các hệ thống học tập ứng dụng AI. Ngoài ra, Gemini còn đề</p>
+<p class="pdf-p">cập đến những xu hướng tương lai như sự kết hợp giữa AI với công nghệ thực</p>
+<p class="pdf-p">tế ảo (VR) và thực tế tăng cường (AR). Những thông tin này giúp bài viết trở</p>
+<p class="pdf-p">nên phong phú và cập nhật hơn. Tuy nhiên, nội dung do Gemini tạo ra đôi khi</p>
+<p class="pdf-p">khá dài và chứa nhiều thông tin không thực sự cần thiết đối với mục tiêu của bài</p>
+<p class="pdf-p">viết. Vì vậy, tôi chỉ sử dụng Gemini như một công cụ bổ sung ý tưởng thay vì sử</p>
+<p class="pdf-p">dụng làm nguồn nội dung chính.</p>
+<p class="pdf-p">Trong khi đó, DALL-E đóng vai trò hoàn toàn khác so với hai công cụ trên. Thay</p>
+<p class="pdf-p">vì tạo nội dung văn bản, DALL-E hỗ trợ tạo hình ảnh minh họa dựa trên mô tả</p>
+<p class="pdf-p">bằng ngôn ngữ tự nhiên. Điểm mạnh của công cụ này là khả năng chuyển đổi ý</p>
+<p class="pdf-p">tưởng thành hình ảnh trực quan trong thời gian ngắn. Nhờ DALL-E, tôi có thể</p>
+<p class="pdf-p">tạo được hình ảnh minh họa sinh viên sử dụng AI trong môi trường học tập hiện</p>
+<p class="pdf-p">đại mà không cần kỹ năng thiết kế chuyên nghiệp. Tuy nhiên, hình ảnh do AI tạo</p>
+<p class="pdf-p">ra đôi khi chưa hoàn toàn chính xác với ý tưởng ban đầu và vẫn cần lựa chọn</p>
+<p class="pdf-p">hoặc chỉnh sửa thêm trước khi sử dụng.</p>
+<p class="pdf-p">Việc kết hợp ba công cụ AI đã làm thay đổi đáng kể quy trình sáng tạo của tôi.</p>
+<p class="pdf-p">Trước đây, tôi thường bắt đầu bằng việc tìm kiếm tài liệu, xây dựng dàn ý rồi</p>
+<p class="pdf-p">mới tiến hành viết nội dung và thiết kế hình ảnh. Quá trình này thường mất nhiều</p>
+<p class="pdf-p">thời gian và công sức. Với sự hỗ trợ của AI, các bước khởi đầu được thực hiện</p>
+<p class="pdf-p">nhanh hơn rất nhiều. ChatGPT giúp tạo bản nháp, Gemini cung cấp thêm ý tưởng</p>
+<p class="pdf-p">và ví dụ thực tế, trong khi DALL-E hỗ trợ phần hình ảnh minh họa. Nhờ đó, tôi</p>
+<p class="pdf-p">có thể dành nhiều thời gian hơn cho việc đánh giá, chọn lọc, chỉnh sửa và hoàn</p>
+<p class="pdf-p">thiện sản phẩm.</p>
+<p class="pdf-p">Từ trải nghiệm thực tế, tôi nhận thấy AI không thay thế hoàn toàn khả năng sáng</p>
+<p class="pdf-p">tạo của con người mà đóng vai trò như một công cụ hỗ trợ mạnh mẽ. Chất lượng</p>
+<p class="pdf-p">sản phẩm cuối cùng vẫn phụ thuộc vào khả năng đặt câu hỏi, lựa chọn thông tin</p>
+<p class="pdf-p">và chỉnh sửa nội dung của người sử dụng. Vì vậy, việc kết hợp hiệu quả giữa</p>
+<p class="pdf-p">năng lực của con người và sức mạnh của AI sẽ là yếu tố quan trọng quyết định</p>
+<p class="pdf-p">thành công của quá trình sáng tạo trong tương lai.</p>
+<h3 class="pdf-h3">IV.</h3>
+<h3 class="pdf-h3">Phân tích vai trò của AI trong quá trình sáng tạo</h3>
+<p class="pdf-p">Thông qua quá trình thực hiện dự án, tôi nhận thấy AI không chỉ là một công cụ</p>
+<p class="pdf-p">hỗ trợ kỹ thuật mà còn làm thay đổi đáng kể cách con người tiếp cận hoạt động</p>
+<p class="pdf-p">sáng tạo. Trước đây, khi thực hiện một bài viết học thuật, tôi thường bắt đầu bằng</p>
+<p class="pdf-p">việc tìm kiếm tài liệu từ nhiều nguồn khác nhau, đọc và tổng hợp thông tin trước</p>
+<p class="pdf-p">khi xây dựng dàn ý. Quá trình này thường tốn khá nhiều thời gian. Tuy nhiên,</p>
+<p class="pdf-p">với sự hỗ trợ của ChatGPT, tôi có thể nhanh chóng tạo ra một bản nháp tương</p>
+<p class="pdf-p">đối hoàn chỉnh chỉ trong vài phút. Gemini giúp tôi bổ sung các ví dụ thực tế và</p>
+<p class="pdf-p">những xu hướng mới liên quan đến chủ đề, trong khi DALL-E hỗ trợ tạo hình</p>
+<p class="pdf-p">ảnh minh họa phù hợp với nội dung bài viết. Điều này cho thấy AI đã chuyển</p>
+<p class="pdf-p">một phần khối lượng công việc từ giai đoạn tìm kiếm và xây dựng nội dung sang</p>
+<p class="pdf-p">giai đoạn đánh giá, chọn lọc và chỉnh sửa thông tin.</p>
+<p class="pdf-p">Tuy nhiên, việc AI giúp con người làm việc nhanh hơn không đồng nghĩa với</p>
+<p class="pdf-p">việc chất lượng sản phẩm luôn được nâng cao. Trong quá trình thực hiện dự án,</p>
+<p class="pdf-p">tôi nhận thấy các nội dung do AI tạo ra thường có xu hướng mạch lạc nhưng đôi</p>
+<p class="pdf-p">khi khá chung chung, thiếu chiều sâu hoặc thiếu dấu ấn cá nhân. Nếu người dùng</p>
+<p class="pdf-p">sử dụng trực tiếp mà không chỉnh sửa, sản phẩm cuối cùng có thể trở nên giống</p>
+<p class="pdf-p">với hàng nghìn nội dung khác được tạo bởi AI. Điều này đặt ra một câu hỏi quan</p>
+<p class="pdf-p">trọng: liệu AI đang thúc đẩy sự sáng tạo hay đang khiến sự sáng tạo trở nên đồng</p>
+<p class="pdf-p">nhất hơn? Theo tôi, AI chỉ thực sự có giá trị khi được sử dụng như một công cụ</p>
+<p class="pdf-p">hỗ trợ để phát triển ý tưởng, thay vì thay thế hoàn toàn quá trình tư duy của con</p>
+<p class="pdf-p">người.</p>
+<p class="pdf-p">Bên cạnh đó, việc sử dụng AI cũng đặt ra nhiều vấn đề đạo đức cần được cân</p>
+<p class="pdf-p">nhắc. Một trong những vấn đề nổi bật nhất là nguy cơ gian lận học thuật. Hiện</p>
+<p class="pdf-p">nay, nhiều sinh viên có thể sử dụng AI để viết bài tập, làm báo cáo hoặc hoàn</p>
+<p class="pdf-p">thành các dự án mà không ghi nhận sự hỗ trợ của công cụ này. Điều đó không</p>
+<p class="pdf-p">chỉ làm giảm giá trị của quá trình học tập mà còn ảnh hưởng đến tính trung thực</p>
+<p class="pdf-p">trong môi trường giáo dục. Ngoài ra, AI đôi khi tạo ra các thông tin sai lệch</p>
+<p class="pdf-p">nhưng được trình bày rất thuyết phục. Nếu người dùng thiếu kỹ năng kiểm chứng</p>
+<p class="pdf-p">thông tin, những sai sót này có thể được lan truyền và gây ảnh hưởng đến chất</p>
+<p class="pdf-p">lượng học thuật.</p>
+<p class="pdf-p">Một vấn đề khác là sự phụ thuộc vào công nghệ. Khi AI ngày càng có khả năng</p>
+<p class="pdf-p">trả lời câu hỏi, tóm tắt tài liệu và giải quyết nhiều nhiệm vụ phức tạp, người học</p>
+<p class="pdf-p">có thể dần hình thành thói quen tìm kiếm câu trả lời ngay lập tức thay vì tự</p>
+<p class="pdf-p">nghiên cứu và suy luận. Về lâu dài, điều này có thể làm suy giảm các kỹ năng</p>
+<p class="pdf-p">quan trọng như tư duy phản biện, giải quyết vấn đề và khả năng sáng tạo độc lập.</p>
+<p class="pdf-p">Vì vậy, thay vì đặt câu hỏi liệu AI có nên được sử dụng trong giáo dục hay không,</p>
+<p class="pdf-p">điều quan trọng hơn là làm thế nào để sử dụng AI một cách có trách nhiệm và</p>
+<p class="pdf-p">hiệu quả.</p>
+<h3 class="pdf-h3">V.</h3>
+<h3 class="pdf-h3">Kết luận</h3>
+<p class="pdf-p">Thông qua dự án này, tôi nhận thấy AI tạo sinh mang lại nhiều lợi ích trong quá</p>
+<p class="pdf-p">trình sáng tạo nội dung. Các công cụ AI giúp tiết kiệm thời gian, hỗ trợ phát triển</p>
+<p class="pdf-p">ý tưởng và nâng cao chất lượng sản phẩm. Tuy nhiên, để tạo ra một sản phẩm</p>
+<p class="pdf-p">thực sự có giá trị, người sử dụng vẫn cần tham gia tích cực vào quá trình đánh</p>
+<p class="pdf-p">giá, chỉnh sửa và hoàn thiện nội dung. Việc kết hợp hiệu quả giữa công nghệ AI</p>
+<p class="pdf-p">và sự sáng tạo của con người sẽ là yếu tố quan trọng trong học tập và làm việc</p>
+<p class="pdf-p">trong tương lai.</p>
+<p class="pdf-p">Từ trải nghiệm thực hiện dự án, tôi cho rằng AI không phải là đối thủ cạnh tranh</p>
+<p class="pdf-p">của con người mà là một công cụ hỗ trợ mạnh mẽ. Giá trị thực sự của AI không</p>
+<p class="pdf-p">nằm ở việc tạo ra nội dung thay con người, mà nằm ở khả năng giúp con người</p>
+<p class="pdf-p">làm việc hiệu quả hơn, khám phá nhiều ý tưởng hơn và dành nhiều thời gian hơn</p>
+<p class="pdf-p">cho các hoạt động đòi hỏi tư duy ở cấp độ cao. Trong tương lai, kỹ năng quan</p>
+<p class="pdf-p">trọng nhất có thể không còn là khả năng ghi nhớ thông tin, mà là khả năng hợp</p>
+<p class="pdf-p">tác với AI một cách thông minh, có chọn lọc và có trách nhiệm.</p>
+<h2 class="pdf-h2">SẢN PHẨM CUỐI CÙNG</h2>
+<h3 class="pdf-h3">Trí tuệ nhân tạo đang thay đổi việc học tập của sinh viên như thế nào?</h3>
+<p class="pdf-p">Trong những năm gần đây, trí tuệ nhân tạo (Artificial Intelligence - AI) đã trở thành một</p>
+<p class="pdf-p">phần quen thuộc trong cuộc sống của sinh viên. Không chỉ được ứng dụng trong các lĩnh</p>
+<p class="pdf-p">vực như y tế hay kinh doanh, AI còn xuất hiện ngày càng nhiều trong giáo dục thông qua</p>
+<p class="pdf-p">các công cụ như ChatGPT, Gemini, Grammarly hay Copilot. Bản thân tôi cũng thường</p>
+<p class="pdf-p">xuyên sử dụng các công cụ này để tìm kiếm thông tin, luyện ngoại ngữ và hỗ trợ làm bài</p>
+<p class="pdf-p">tập. Điều đó cho thấy AI đang dần thay đổi cách sinh viên tiếp cận kiến thức và tổ chức</p>
+<p class="pdf-p">việc học trong thời đại số.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai5_p11_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<p class="pdf-p">Hình 1. Sinh viên sử dụng các công cụ AI để học tập trong môi trường giáo dục hiện đại</p>
+<p class="pdf-p">(Tạo bằng DALL-E).</p>
+<p class="pdf-p">Trước hết, AI giúp sinh viên tiếp cận kiến thức nhanh chóng và hiệu quả hơn. Trước đây,</p>
+<p class="pdf-p">khi cần tìm hiểu một khái niệm mới, tôi thường phải đọc nhiều bài viết hoặc tài liệu khác</p>
+<p class="pdf-p">nhau để tổng hợp thông tin. Hiện nay, các công cụ như ChatGPT có thể tóm tắt nội dung,</p>
+<p class="pdf-p">giải thích khái niệm và đưa ra ví dụ minh họa chỉ trong vài giây. Điều này giúp tiết kiệm</p>
+<p class="pdf-p">đáng kể thời gian tìm kiếm thông tin, đồng thời cho phép người học tập trung nhiều hơn</p>
+<p class="pdf-p">vào việc hiểu và vận dụng kiến thức. Bên cạnh đó, nhiều nền tảng học tập như Duolingo</p>
+<p class="pdf-p">hay Khan Academy cũng đang ứng dụng AI để cá nhân hóa lộ trình học tập, giúp người</p>
+<p class="pdf-p">học cải thiện những kỹ năng còn hạn chế một cách hiệu quả hơn.</p>
+<p class="pdf-p">Ngoài việc hỗ trợ tìm kiếm thông tin, AI còn đóng vai trò như một gia sư cá nhân hoạt động</p>
+<p class="pdf-p">24/7. Sinh viên có thể đặt câu hỏi, yêu cầu giải thích các khái niệm khó hoặc luyện tập</p>
+<p class="pdf-p">ngoại ngữ thông qua các cuộc hội thoại với AI. Không giống như lớp học truyền thống bị</p>
+<p class="pdf-p">giới hạn bởi thời gian và địa điểm, AI luôn sẵn sàng hỗ trợ bất cứ khi nào người học cần.</p>
+<p class="pdf-p">Nhờ đó, sinh viên có thể chủ động hơn trong quá trình học tập và xây dựng phương pháp</p>
+<p class="pdf-p">học phù hợp với bản thân.</p>
+<p class="pdf-p">AI cũng góp phần nâng cao chất lượng học tập và sáng tạo nội dung. Các công cụ như</p>
+<p class="pdf-p">Grammarly hỗ trợ kiểm tra lỗi ngữ pháp và cải thiện cách diễn đạt trong bài viết. Trong khi</p>
+<p class="pdf-p">đó, ChatGPT hay Gemini có thể hỗ trợ xây dựng dàn ý, gợi ý ý tưởng hoặc đề xuất hướng</p>
+<p class="pdf-p">triển khai cho các bài luận và dự án. Đối với những sinh viên gặp khó khăn trong việc viết</p>
+<p class="pdf-p">học thuật hoặc sử dụng ngoại ngữ, đây là những công cụ hỗ trợ rất hữu ích. Tuy nhiên, hiệu</p>
+<p class="pdf-p">quả của AI phụ thuộc nhiều vào cách sử dụng của người học. AI có thể đưa ra gợi ý, nhưng</p>
+<p class="pdf-p">việc đánh giá và lựa chọn thông tin phù hợp vẫn là trách nhiệm của con người.</p>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai5_p12_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<p class="pdf-p">Hình 2. Infographic tóm tắt lợi ích và thách thức của AI trong giáo dục (Thiết kế bằng</p>
+<p class="pdf-p">Canva AI, nội dung được biên soạn bởi tác giả).</p>
+<p class="pdf-p">Mặc dù mang lại nhiều lợi ích, việc sử dụng AI trong học tập cũng đặt ra không ít thách</p>
+<p class="pdf-p">thức. Một trong những vấn đề đáng lo ngại nhất là sự phụ thuộc quá mức vào công nghệ.</p>
+<p class="pdf-p">Nếu sinh viên quá phụ thuộc vào AI và chỉ sao chép câu trả lời mà không tự nghiên cứu,</p>
+<p class="pdf-p">họ có thể dần mất đi khả năng tư duy phản biện và giải quyết vấn đề. Theo tôi, giá trị lớn</p>
+<p class="pdf-p">nhất của việc học đại học không nằm ở việc tìm được đáp án nhanh nhất mà là quá trình</p>
+<p class="pdf-p">phân tích, đánh giá và hình thành quan điểm riêng. Vì vậy, AI nên được xem là công cụ hỗ</p>
+<p class="pdf-p">trợ thay vì thay thế hoàn toàn nỗ lực học tập của sinh viên.</p>
+<p class="pdf-p">Một thách thức khác là độ chính xác của thông tin do AI cung cấp. Mặc dù AI có khả năng</p>
+<p class="pdf-p">xử lý lượng dữ liệu khổng lồ, công nghệ này vẫn có thể tạo ra những thông tin chưa chính</p>
+<p class="pdf-p">xác hoặc thiếu nguồn tham khảo đáng tin cậy. Nếu người học tin tưởng tuyệt đối vào các</p>
+<p class="pdf-p">câu trả lời do AI cung cấp mà không kiểm chứng từ các nguồn học thuật chính thống, họ</p>
+<p class="pdf-p">có thể mắc phải những sai sót trong học tập và nghiên cứu.</p>
+<p class="pdf-p">Bên cạnh đó, vấn đề đạo đức học thuật cũng ngày càng được quan tâm. Một số sinh viên</p>
+<p class="pdf-p">sử dụng AI để hoàn thành bài tập, báo cáo hoặc dự án mà không ghi nhận sự hỗ trợ của</p>
+<p class="pdf-p">công cụ này. Điều đó có thể dẫn đến tình trạng gian lận học thuật và làm giảm ý nghĩa của</p>
+<p class="pdf-p">quá trình học tập. Do đó, các cơ sở giáo dục cần xây dựng những hướng dẫn rõ ràng về</p>
+<p class="pdf-p">việc sử dụng AI, đồng thời khuyến khích sinh viên khai thác công nghệ một cách có trách</p>
+<p class="pdf-p">nhiệm.</p>
+<p class="pdf-p">Trong tương lai, vai trò của AI trong giáo dục có thể còn phát triển mạnh mẽ hơn nữa. Sự</p>
+<p class="pdf-p">kết hợp giữa AI với các công nghệ như thực tế ảo (VR) và thực tế tăng cường (AR) hứa</p>
+<p class="pdf-p">hẹn sẽ mang đến những trải nghiệm học tập trực quan và sinh động hơn. Thay vì chỉ học</p>
+<p class="pdf-p">qua sách vở, sinh viên có thể tham gia các mô phỏng thực tế hoặc tương tác với môi trường</p>
+<p class="pdf-p">học tập được hỗ trợ bởi AI, từ đó nâng cao khả năng tiếp thu và ứng dụng kiến thức.</p>
+<p class="pdf-p">Tóm lại, trí tuệ nhân tạo đang tạo ra những thay đổi sâu sắc trong cách sinh viên học tập.</p>
+<p class="pdf-p">AI mang lại nhiều lợi ích như hỗ trợ tiếp cận kiến thức nhanh hơn, cá nhân hóa việc học và</p>
+<p class="pdf-p">nâng cao hiệu quả học tập. Tuy nhiên, công nghệ này cũng đặt ra những thách thức liên</p>
+<p class="pdf-p">quan đến sự phụ thuộc, độ tin cậy của thông tin và đạo đức học thuật. Vì vậy, sinh viên cần</p>
+<p class="pdf-p">sử dụng AI một cách thông minh và có trách nhiệm, xem AI là công cụ hỗ trợ thay vì thay</p>
+<p class="pdf-p">thế tư duy của bản thân. Khi được áp dụng đúng cách, AI sẽ trở thành người đồng hành đắc</p>
+<p class="pdf-p">lực giúp người học phát triển trong môi trường giáo dục hiện đại.</p>`,
+  6: `<h2 class="pdf-h2">BÁO CÁO SỬ DỤNG AI CÓ TRÁCH NHIỆM TRONG HỌC TẬP VÀ</h2>
+<h2 class="pdf-h2">NGHIÊN CỨU</h2>
+<h3 class="pdf-h3">I.</h3>
+<h3 class="pdf-h3">Phân tích chính sách sử dụng AI trong học tập và nghiên cứu</h3>
+<h3 class="pdf-h3">Trong bài báo cáo này, em lựa chọn nghiên cứu định hướng sử dụng AI</h3>
+<h3 class="pdf-h3">của Đại học FPT, một trong những trường đại học tại Việt Nam có mức độ</h3>
+<h3 class="pdf-h3">ứng dụng công nghệ và AI mạnh mẽ trong đào tạo, đồng thời so sánh với</h3>
+<h3 class="pdf-h3">chính sách của Đại học Monash (Úc). Việc lựa chọn này giúp em có cái</h3>
+<h3 class="pdf-h3">nhìn toàn diện hơn về cách các trường đại học đang thích ứng với sự phát</h3>
+<h3 class="pdf-h3">triển nhanh chóng của trí tuệ nhân tạo.</h3>
+<h3 class="pdf-h3">Đại học FPT khuyến khích sinh viên sử dụng AI như một công cụ hỗ trợ</h3>
+<h3 class="pdf-h3">học tập, nghiên cứu và phát triển kỹ năng nghề nghiệp trong tương lai. Tuy</h3>
+<h3 class="pdf-h3">nhiên, nhà trường cũng nhấn mạnh rằng AI không được thay thế hoàn toàn</h3>
+<h3 class="pdf-h3">vai trò của người học. Sinh viên cần duy trì tư duy phản biện, khả năng</h3>
+<h3 class="pdf-h3">giải quyết vấn đề và chịu trách nhiệm đối với sản phẩm học tập của mình.</h3>
+<h3 class="pdf-h3">Bên cạnh đó, việc sử dụng AI phải gắn liền với các nguyên tắc về trung</h3>
+<h3 class="pdf-h3">thực và liêm chính học thuật để tránh tình trạng phụ thuộc quá mức vào</h3>
+<h3 class="pdf-h3">công nghệ.</h3>
+<h3 class="pdf-h3">Trong khi đó, Đại học Monash (Úc) xây dựng một hệ thống hướng dẫn cụ</h3>
+<h3 class="pdf-h3">thể hơn bằng cách phân loại mức độ được phép sử dụng AI trong từng dạng</h3>
+<h3 class="pdf-h3">bài tập. Một số bài tập cho phép sử dụng AI để tìm ý tưởng, xây dựng dàn</h3>
+<h3 class="pdf-h3">ý hoặc chỉnh sửa ngôn ngữ, trong khi những bài đánh giá năng lực cá nhân</h3>
+<h3 class="pdf-h3">có thể hạn chế hoặc cấm sử dụng AI hoàn toàn. Nhà trường cũng yêu cầu</h3>
+<h3 class="pdf-h3">sinh viên công khai việc sử dụng AI và chịu trách nhiệm về nội dung cuối</h3>
+<h3 class="pdf-h3">cùng được nộp.</h3>
+<h3 class="pdf-h3">Khi so sánh hai mô hình này, em nhận thấy cả hai trường đều có chung</h3>
+<h3 class="pdf-h3">quan điểm rằng AI là công cụ hỗ trợ chứ không phải công cụ thay thế tư</h3>
+<h3 class="pdf-h3">duy của người học. Tuy nhiên, chính sách của Monash được xây dựng cụ</h3>
+<h3 class="pdf-h3">thể và chi tiết hơn, trong khi các trường đại học tại Việt Nam vẫn đang</h3>
+<h3 class="pdf-h3">trong quá trình hoàn thiện các quy định liên quan đến AI. Theo em, đây là</h3>
+<h3 class="pdf-h3">một hướng đi mà các trường đại học Việt Nam nên tham khảo. Thay vì</h3>
+<h3 class="pdf-h3">cấm hoàn toàn hoặc cho phép sử dụng một cách tự do, các trường nên quy</h3>
+<h3 class="pdf-h3">định rõ phạm vi sử dụng AI, yêu cầu sinh viên minh bạch về quá trình sử</h3>
+<h3 class="pdf-h3">dụng và khuyến khích duy trì tư duy độc lập.</h3>
+<h3 class="pdf-h3">II.</h3>
+<h3 class="pdf-h3">Thực hiện một nhiệm vụ học tập với sự hỗ trợ của AI</h3>
+<h3 class="pdf-h3">Đối với phần thực hành, em lựa chọn nhiệm vụ viết một bài luận với chủ</h3>
+<h3 class="pdf-h3">đề “Trí tuệ nhân tạo đang thay đổi việc học tập của sinh viên như thế nào?”.</h3>
+<h3 class="pdf-h3">Trong quá trình thực hiện, em sử dụng AI như một công cụ hỗ trợ để xây</h3>
+<h3 class="pdf-h3">dựng dàn ý, phát triển nội dung và chỉnh sửa văn phong.</h3>
+<h3 class="pdf-h3">Đầu tiên, em sử dụng prompt: “Hãy viết dàn ý cho một bài luận khoảng</h3>
+<h3 class="pdf-h3">800 từ với chủ đề ‘Trí tuệ nhân tạo đang thay đổi việc học tập của sinh viên</h3>
+<h3 class="pdf-h3">như thế nào?’, bao gồm mở bài, lợi ích, thách thức và kết luận.” AI đã đề</h3>
+<h3 class="pdf-h3">xuất một bố cục gồm bốn phần chính, giúp em xác định được hướng triển</h3>
+<h3 class="pdf-h3">khai bài viết một cách rõ ràng và logic.</h3>
+<h3 class="pdf-h3">Sau đó, em tiếp tục sử dụng prompt: “Hãy viết một bài luận khoảng 800 từ</h3>
+<h3 class="pdf-h3">dựa trên dàn ý trên với văn phong phù hợp với sinh viên năm nhất đại học.”</h3>
+<h3 class="pdf-h3">AI đã tạo ra một bài luận hoàn chỉnh, trong đó đề cập đến các lợi ích như</h3>
+<h3 class="pdf-h3">cá nhân hóa việc học tập, tiết kiệm thời gian tìm kiếm thông tin và hỗ trợ</h3>
+<h3 class="pdf-h3">học ngoại ngữ, đồng thời chỉ ra những thách thức như nguy cơ phụ thuộc</h3>
+<h3 class="pdf-h3">vào AI và sự suy giảm tư duy phản biện.</h3>
+<h3 class="pdf-h3">Tuy nhiên, em không sử dụng nguyên văn nội dung do AI tạo ra. Thay vào</h3>
+<h3 class="pdf-h3">đó, em chủ động kiểm tra lại các thông tin, chỉnh sửa câu từ để phù hợp</h3>
+<h3 class="pdf-h3">với phong cách viết cá nhân và bổ sung thêm những ví dụ thực tế từ trải</h3>
+<h3 class="pdf-h3">nghiệm học tập của bản thân. Em cũng lược bỏ những phần diễn đạt chung</h3>
+<h3 class="pdf-h3">chung hoặc lặp ý để đảm bảo bài viết có tính logic và phản ánh được quan</h3>
+<h3 class="pdf-h3">điểm riêng. Thông qua quá trình này, em nhận thấy rằng AI có thể giúp tiết</h3>
+<h3 class="pdf-h3">kiệm thời gian nhưng không thể thay thế hoàn toàn vai trò của người học.</h3>
+<h3 class="pdf-h3">Để đảm bảo tính minh bạch, em cũng thực hiện việc trích dẫn AI trong</h3>
+<h3 class="pdf-h3">phần tài liệu tham khảo. Việc công khai quá trình sử dụng AI không chỉ thể</h3>
+<h3 class="pdf-h3">hiện sự trung thực trong học thuật mà còn giúp người đọc hiểu được vai</h3>
+<h3 class="pdf-h3">trò của công cụ này trong quá trình hoàn thành bài tập.</h3>
+<h3 class="pdf-h3">III.</h3>
+<h3 class="pdf-h3">Phân tích các vấn đề đạo đức liên quan đến việc sử dụng AI trong học</h3>
+<h3 class="pdf-h3">thuật</h3>
+<h3 class="pdf-h3">Một trong những vấn đề được quan tâm nhiều nhất hiện nay là ranh giới</h3>
+<h3 class="pdf-h3">giữa việc sử dụng AI như một công cụ hỗ trợ hợp lý và hành vi gian lận</h3>
+<h3 class="pdf-h3">học thuật. Theo em, AI được sử dụng một cách hợp lý khi nó đóng vai trò</h3>
+<h3 class="pdf-h3">hỗ trợ người học trong việc tìm kiếm thông tin, xây dựng ý tưởng, kiểm tra</h3>
+<h3 class="pdf-h3">ngữ pháp hoặc đề xuất cấu trúc bài viết. Ngược lại, việc sao chép toàn bộ</h3>
+<h3 class="pdf-h3">nội dung do AI tạo ra và nộp như sản phẩm của bản thân là một hành vi</h3>
+<h3 class="pdf-h3">không trung thực và làm mất đi ý nghĩa của quá trình học tập.</h3>
+<h3 class="pdf-h3">Bên cạnh đó, vấn đề quyền sở hữu trí tuệ cũng đặt ra nhiều thách thức. AI</h3>
+<h3 class="pdf-h3">được huấn luyện từ một lượng lớn dữ liệu trên Internet nên đôi khi có thể</h3>
+<h3 class="pdf-h3">tạo ra những nội dung tương đồng với các nguồn đã được công bố. Nếu</h3>
+<h3 class="pdf-h3">sinh viên sử dụng những nội dung này mà không kiểm tra hoặc không trích</h3>
+<h3 class="pdf-h3">dẫn phù hợp, nguy cơ vi phạm bản quyền và đạo đức học thuật là rất cao.</h3>
+<h3 class="pdf-h3">Vì vậy, việc kiểm chứng thông tin và trích dẫn minh bạch là vô cùng cần</h3>
+<h3 class="pdf-h3">thiết.</h3>
+<h3 class="pdf-h3">Ngoài ra, AI còn tác động trực tiếp đến quá trình học tập và phát triển kỹ</h3>
+<h3 class="pdf-h3">năng của sinh viên. Về mặt tích cực, AI giúp tối ưu hóa thời gian học tập,</h3>
+<h3 class="pdf-h3">hỗ trợ học ngoại ngữ và nâng cao khả năng tiếp cận tri thức. Tuy nhiên,</h3>
+<h3 class="pdf-h3">nếu lạm dụng AI, sinh viên có thể dần mất đi khả năng tư duy phản biện,</h3>
+<h3 class="pdf-h3">kỹ năng giải quyết vấn đề và khả năng tự học. Điều này cho thấy AI chỉ</h3>
+<h3 class="pdf-h3">nên được xem là một công cụ hỗ trợ, còn con người vẫn phải giữ vai trò</h3>
+<h3 class="pdf-h3">trung tâm trong quá trình học tập.</h3>
+<h3 class="pdf-h3">IV.</h3>
+<h3 class="pdf-h3">Bộ nguyên tắc cá nhân về việc sử dụng AI có trách nhiệm trong học</h3>
+<h3 class="pdf-h3">tập</h3>
+<h3 class="pdf-h3">Sau khi tìm hiểu về các vấn đề đạo đức liên quan đến AI, em đã xây dựng</h3>
+<h3 class="pdf-h3">cho mình một bộ nguyên tắc cá nhân nhằm sử dụng AI một cách có trách</h3>
+<h3 class="pdf-h3">nhiệm. Thứ nhất, em sẽ sử dụng AI như một công cụ hỗ trợ thay vì để AI</h3>
+<h3 class="pdf-h3">thay thế hoàn toàn quá trình tư duy của bản thân. Thứ hai, em sẽ luôn kiểm</h3>
+<h3 class="pdf-h3">chứng thông tin từ nhiều nguồn đáng tin cậy trước khi sử dụng vào bài tập</h3>
+<h3 class="pdf-h3">hoặc nghiên cứu. Thứ ba, em sẽ không sao chép nguyên văn nội dung do</h3>
+<h3 class="pdf-h3">AI tạo ra mà sẽ chủ động chỉnh sửa và bổ sung quan điểm cá nhân. Thứ tư,</h3>
+<h3 class="pdf-h3">em sẽ minh bạch trong việc trích dẫn và công khai việc sử dụng AI trong</h3>
+<h3 class="pdf-h3">các sản phẩm học thuật khi cần thiết. Thứ năm, em sẽ không chia sẻ các</h3>
+<h3 class="pdf-h3">thông tin cá nhân hoặc dữ liệu nhạy cảm cho các công cụ AI. Cuối cùng,</h3>
+<h3 class="pdf-h3">em sẽ duy trì và phát triển các kỹ năng quan trọng như tư duy phản biện,</h3>
+<h3 class="pdf-h3">sáng tạo và tự học để tránh sự phụ thuộc quá mức vào công nghệ.</h3>
+<h3 class="pdf-h3">V.</h3>
+<h3 class="pdf-h3">Kết luận</h3>
+<h3 class="pdf-h3">Trí tuệ nhân tạo đang trở thành một phần quan trọng trong môi trường giáo</h3>
+<h3 class="pdf-h3">dục hiện đại và mang lại nhiều cơ hội để nâng cao hiệu quả học tập. Tuy</h3>
+<h3 class="pdf-h3">nhiên, việc sử dụng AI cũng đặt ra không ít thách thức về đạo đức học thuật,</h3>
+<h3 class="pdf-h3">tính trung thực và sự phát triển lâu dài của người học. Thông qua việc tìm</h3>
+<h3 class="pdf-h3">hiểu chính sách của nhà trường, thực hành sử dụng AI và phân tích các vấn</h3>
+<h3 class="pdf-h3">đề liên quan, em nhận thấy rằng AI không nên được xem là một công cụ</h3>
+<h3 class="pdf-h3">thay thế con người mà cần được sử dụng như một trợ lý hỗ trợ quá trình</h3>
+<h3 class="pdf-h3">học tập. Việc sử dụng AI một cách minh bạch, có trách nhiệm và có tư duy</h3>
+<h3 class="pdf-h3">phản biện sẽ giúp sinh viên vừa tận dụng được lợi ích của công nghệ, vừa</h3>
+<h3 class="pdf-h3">bảo đảm được sự phát triển toàn diện về kiến thức và kỹ năng trong tương</h3>
+<h3 class="pdf-h3">lai.</h3>
+<div class="pdf-img-wrap"><img src="bai_imgs/bai6_p4_0.jpeg" class="pdf-img" alt="Minh hoa"/></div>
+<h3 class="pdf-h3">Hình 1. Infographic “Sử dụng AI có trách nhiệm trong học thuật” (Nguồn:</h3>
+<h3 class="pdf-h3">Tác giả tự thiết kế).</h3>`
+};
+
 document.addEventListener('DOMContentLoaded',()=>{renderWKS();renderTL();renderSK();setTimeout(initRV,80)});
+
+/* PDF image zoom via lightbox */
+document.addEventListener('click', e=>{
+  if(e.target.classList.contains('pdf-img')){
+    const src=e.target.src;
+    const alt=e.target.alt||'';
+    const lbImg=document.getElementById('lbimg');
+    const lbt=document.getElementById('lbt');
+    const lbth=document.getElementById('lbth');
+    const lbcnt=document.getElementById('lbcnt');
+    if(lbImg){lbImg.src=src;}
+    if(lbt){lbt.textContent=alt;}
+    if(lbth){lbth.innerHTML='';}
+    if(lbcnt){lbcnt.textContent='';}
+    document.getElementById('lb').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+});
 </script>
 </body>
 </html>
